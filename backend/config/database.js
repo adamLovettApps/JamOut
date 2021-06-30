@@ -6,8 +6,6 @@ const password = db.password;
 const database = db.database;
 const host = db.host;
 
-console.log("DATABASE!!!!!!!!!!!!!!!!!", database)
-
 module.exports = {
   development: {
     username,
@@ -21,6 +19,12 @@ module.exports = {
     use_env_variable: "DATABASE_URL",
     dialect: "postgres",
     seederStorage: "sequelize",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   },
 };
 
