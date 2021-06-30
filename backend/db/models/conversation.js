@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const conversation = sequelize.define('conversation', {
+  const Conversation = sequelize.define('Conversation', {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {});
-  conversation.associate = function(models) {
-    conversation.belongsTo(models.user, {foreignKey: "id", as: "user1"})
-    conversation.belongsTo(models.user, {foreignKey: "id", as: "user2"})
+  Conversation.associate = function(models) {
+    Conversation.belongsTo(models.User, {foreignKey: "id", as: "user1"})
+    Conversation.belongsTo(models.User, {foreignKey: "id", as: "user2"})
   };
-  return conversation;
+  return Conversation;
 };

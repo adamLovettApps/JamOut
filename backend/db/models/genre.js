@@ -1,13 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const genre = sequelize.define('genre', {
-    genre: {
+  const Genre = sequelize.define('Genre', {
+    Genre: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {});
-  genre.associate = function(models) {
-    genre.belongsToMany(models.user, {through: "usergenre", foreignKey: "genreId"})
+  Genre.associate = function(models) {
+    Genre.belongsToMany(models.User, {through: "Usergenre", foreignKey: "genreId"})
   };
-  return genre;
+  return Genre;
 };

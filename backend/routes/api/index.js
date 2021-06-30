@@ -11,7 +11,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const user = await User.findOne({
       where: {
-        username: 'Demo-lition'
+        username: 'T-Rez'
       }
     });
     setTokenCookie(res, user);

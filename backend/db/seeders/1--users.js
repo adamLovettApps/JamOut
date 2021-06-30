@@ -29,23 +29,24 @@ module.exports = {
     seeds.push({
         email: 'trentreznor@nin.com',
         username: 'T-Rez',
-        hashedPassword: bcrypt.hashSync('password'),
+        hashedpassword: bcrypt.hashSync('password'),
         city: "Los Angeles",
         state: "California",
         zip: 90017,
         bio: "The greatest musician of all time.",
-        location:  Sequelize.fn('ST_MakePoint', 34.0559 , -118.2447 ),
-        profilePhoto: "https://jamout.s3.us-west-1.amazonaws.com/trent.jpeg",
+        lat: 34,
+        lng: -118,
+        profilephoto: "https://jamout.s3.us-west-1.amazonaws.com/trent.jpeg",
         createdAt: new Date(),
         updatedAt: new Date()
       })
     
-    return queryInterface.bulkInsert('users', seeds, {});
+    return queryInterface.bulkInsert('Users', seeds, {});
   },
 
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('users', {
+    return queryInterface.bulkDelete('Users', {
         username: { [Op.in]: ['T-Rez'] }
     }, {});
   }

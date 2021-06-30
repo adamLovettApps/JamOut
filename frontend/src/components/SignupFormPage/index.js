@@ -11,7 +11,7 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [image, setImage] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
@@ -20,11 +20,16 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, password, city, state, zip, bio, image }))
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });

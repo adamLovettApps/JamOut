@@ -1,6 +1,8 @@
 'use strict';
+const { Validator } = require('sequelize');
+const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
-  const user = sequelize.define('user', {
+  const User = sequelize.define('User', {
     username: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -22,14 +24,14 @@ module.exports = (sequelize, DataTypes) => {
           len: [3, 256]
         }
       },
-      hashedPassword: {
+      hashedpassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
         validate: {
           len: [60, 60]
         }
       },
-    profilePhoto: {
+    profilephoto: {
       type: DataTypes.STRING, 
       allowNull: false
     },
@@ -48,21 +50,80 @@ module.exports = (sequelize, DataTypes) => {
     bio: {
       type: DataTypes.STRING,
     },
+    lat: {
+      type: DataTypes.FLOAT,
+    },
+    lng: {
+      type: DataTypes.FLOAT,
+    },
     location: {
-      type: DataTypes.GEOMETRY,
-      allowNull: false
+      type: DataTypes.GEOGRAPHY,
     }
-  }, {});
-  user.associate = function(models) {
-    user.belongsToMany(models.genre, {through: "usergenre", foreignKey: "userId"})
-    user.belongsToMany(models.instrument, {through: "userinstrument", foreignKey: "userId"})
-    user.hasMany(models.song, {foreignKey: "userId"})
-    user.hasMany(models.conversation, {foreignKey: "userId"})
-    user.hasMany(models.conversation, {foreignKey: "userId2"})
-    user.hasMany(models.like, {foreignKey: "userId"})
-    user.hasMany(models.like, {foreignKey: "userId2"})
-    user.hasMany(models.message, {foreignKey: "userIdTo"})
-    user.hasMany(models.message, {foreignKey: "userIdFrom"})
+  },
+  {
+      defaultScope: {
+        attributes: {
+          exclude: ['hashedpassword', 'email', 'createdAt', 'updatedAt']
+        }
+      },
+      scopes: {
+        currentUser: {
+          attributes: { exclude: ['hashedpassword'] }
+        },
+        loginUser: {
+          attributes: {}
+        }
+      }
+    }
+  
+  
+  , {});
+  User.associate = function(models) {
+    User.belongsToMany(models.Genre, {through: "usergenre", foreignKey: "userId"})
+    User.belongsToMany(models.Instrument, {through: "userinstrument", foreignKey: "userId"})
+    User.hasMany(models.Song, {foreignKey: "userId"})
+    User.hasMany(models.Conversation, {foreignKey: "userId"})
+    User.hasMany(models.Conversation, {foreignKey: "userId2"})
+    User.hasMany(models.Like, {foreignKey: "userId"})
+    User.hasMany(models.Like, {foreignKey: "userId2"})
+    User.hasMany(models.Message, {foreignKey: "userIdTo"})
+    User.hasMany(models.Message, {foreignKey: "userIdFrom"})
   };
-  return user;
+  User.prototype.toSafeObject = function () {
+    // remember, this cannot be an arrow function
+    const { id, username, email } = this; // context will be the User instance
+    return { id, username, email };
+  };
+
+  User.prototype.validatePassword = function (password) {
+    return bcrypt.compareSync(password, this.hashedPassword.toString());
+  };
+
+  User.getCurrentUserById = async function (id) {
+    return await User.scope('currentUser').findByPk(id);
+  };
+
+  User.login = async function ({ credential, password }) {
+    const { Op } = require('sequelize');
+    const user = await User.scope('loginUser').findOne({
+      where: {
+        [Op.or]: {
+          username: credential,
+          email: credential
+        }
+      }
+    });
+    if (user && user.validatePassword(password)) {
+      return await User.scope('currentUser').findByPk(user.id);
+    }
+  };
+
+  User.signup = async function ({ email, username, password, profilephoto, city, state, zip, bio, lat, lng  }) {
+    const hashedpassword = bcrypt.hashSync(password);
+    const user = await User.create({
+      email, username, hashedpassword, profilephoto, city, state, zip, bio, lat, lng
+    });
+    return await User.scope('currentUser').findByPk(user.id);
+  };
+  return User;
 };

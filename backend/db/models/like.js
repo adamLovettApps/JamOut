@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const like = sequelize.define('like', {
+  const Like = sequelize.define('Like', {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
   }, {});
-  like.associate = function(models) {
-    like.belongsTo(models.user, {foreignKey: "id", as: "liker"})
-    like.belongsTo(models.user, {foreignKey: "id", as: "likee"})
+  Like.associate = function(models) {
+    Like.belongsTo(models.User, {foreignKey: "id", as: "liker"})
+    Like.belongsTo(models.User, {foreignKey: "id", as: "likee"})
   };
-  return like;
+  return Like;
 };

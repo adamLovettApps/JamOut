@@ -2,125 +2,107 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('instruments', [
+    
+      // Add altering commands here.
+      // Return a promise to correctly handle asynchronicity.
+
+      return queryInterface.bulkInsert('Genres', [
         {
-          instrument: "Acoustic Guitar",
+          genre: "Blues",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Banjo",
+          genre: "Country",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Bass",
+          genre: "Dance",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Cello",
+          genre: "Electronic",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Clarinet",
+          genre: "Folk",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Classical Guitar",
+          genre: "Funk",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Double Bass",
+          genre: "Gospel",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Drums",
+          genre: "Hardcore",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Electric Bass",
+          genre: "Industrial",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Electric Guitar",
+          genre: "Jazz",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Flute",
+          genre: "Latin",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Harmonica",
+          genre: "Metal",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Harp",
+          genre: "Pop",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Hurdy Gurdy",
+          genre: "Punk",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Keyboard",
+          genre: "R&B",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Mandolin",
+          genre: "Reggae",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Piano",
+          genre: "Rock",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Saxophone",
+          genre: "Ska",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Synthesizer",
+          genre: "Soul",
           createdAt: new Date(),
           updatedAt: new Date()
-        },
-        {
-          instrument: "Theramin",
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          instrument: "Trombone",
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          instrument: "Trumpet",
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        {
-          instrument: "Ukulele",
-          createdAt: new Date(),
-          updatedAt: new Date()
-        },
-        
-          
-      ], {});
+        }
+    ], {});
     
   },
 
@@ -132,13 +114,11 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-  const Op = Sequelize.Op;
-  return queryInterface.bulkDelete('instruments', {
-        instrument: { [Op.in]: ['Acoustic Guitar', 'Banjo', 'Bass', 'Cello', 'Clarinet',
-                              "Classical Guitar", "Double Bass", "Drums", "Electric Bass", "Flute",
-                              "Harmonica", "Harp", "Hurdy Gurdy", "Keyboard", "Mandolin", "Piano",
-                              "Saxophone", "Synthesizer", "Theramin", "Trombone", "Trumpet", "Ukulele",
-                              "Violin", "Vocals"] }
-    }, {});
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete('Genres', {
+          genre: { [Op.in]: ["Blues", "Country", "Dance", "Electronic", "Folk", "Funk", "Gospel",
+                              "Hardcore", "Industrial", "Jazz", "Latin", "Metal", "Pop", "Punk",
+                                "R&B", "Reggae", "Rock", "Ska", "Soul"] }
+      }, {});
   }
 };

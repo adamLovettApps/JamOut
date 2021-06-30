@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const song = sequelize.define('song', {
+  const Song = sequelize.define('Song', {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {});
-  song.associate = function(models) {
-    song.belongsTo(models.user, {foreignKey: "id"})
+  Song.associate = function(models) {
+    Song.belongsTo(models.User, {foreignKey: "id"})
   };
-  return song;
+  return Song;
 };

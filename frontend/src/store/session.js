@@ -28,14 +28,24 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  const { username, email, password } = user;
+  console.log("IN THE REDUX StORE!!!!!!!")
+  console.log("USER", user)
+  const { username, email, password, image, city, state, zip, bio } = user;
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("image", image);
+  formData.append("city", city);
+  formData.append("state", state);
+  formData.append("zip", zip);
+  formData.append("bio", bio);
   const response = await fetch('/api/users', {
     method: 'POST',
-    body: JSON.stringify({
-      username,
-      email,
-      password
-    })
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData
   });
 
   dispatch(setUser(response.data.user));

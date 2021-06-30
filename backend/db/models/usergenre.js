@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const usergenre = sequelize.define('usergenre', {
+  const Usergenre = sequelize.define('Usergenre', {
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     }
   }, {});
-  usergenre.associate = function(models) {
+  Usergenre.associate = function(models) {
     // associations can be defined here
   };
-  return usergenre;
+  return Usergenre;
 };
