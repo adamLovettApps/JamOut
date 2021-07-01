@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const Sequelize = require('sequelize')
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Userinstrument, Usergenre } = require('../../db/models');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3')
 const fetch = require("node-fetch");
 const router = express.Router();
@@ -37,13 +37,12 @@ router.post(
     const { email, password, username, city, state, bio, zip } = req.body;
     const profilephoto = await singlePublicFileUpload(req.file);
     let data = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=${key}&components=postal_code:${zip}`);
-    console.log("DATA", data)
+
     let results = await data.json();
-    console.log(results.results[0].geometry)
     let lng = results.results[0].geometry.location.lng;
     let lat = results.results[0].geometry.location.lat;
     const user = await User.signup({ email, username, password, profilephoto, city, bio, state, zip, lng, lat });
-
+    
     await setTokenCookie(res, user);
 
     return res.json({

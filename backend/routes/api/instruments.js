@@ -1,31 +1,32 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { Genre, Usergenre } = require("../../db/models");
+const { Instrument, Userinstrument } = require("../../db/models");
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
-    const genres = await Genre.findAll({
+    const instruments = await Instrument.findAll({
         raw: true
     });
 
-    return res.json(genres);
+    return res.json(instruments);
 }));
 
 router.post('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
-    const chosenGenres = req.body[0];
+    const chosenInstruments = req.body[0];
 
-    for (let i = 0; i < chosenGenres.length; i++) {
-        const userGenreBuild = Usergenre.build({
+    for (let i = 0; i < chosenInstruments.length; i++) {
+        const userinstrumentBuild = Userinstrument.build({
             UserId: id,
-            GenreId: chosenGenres[i]
+            InstrumentId: chosenInstruments[i]
         })
-        await userGenreBuild.save()
+        await userinstrumentBuild.save()
     }
 
     return res.json({});
 }));
+
 
 
 module.exports = router;
