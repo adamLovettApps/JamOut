@@ -4,127 +4,127 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Instruments', [
         {
-          instrument: "Acoustic Guitar",
+          name: "Acoustic Guitar",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Banjo",
+          name: "Banjo",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Bass",
+          name: "Bass",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Cello",
+          name: "Cello",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Clarinet",
+          name: "Clarinet",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Classical Guitar",
+          name: "Classical Guitar",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Double Bass",
+          name: "Double Bass",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Drums",
+          name: "Drums",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Electric Bass",
+          name: "Electric Bass",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Electric Guitar",
+          name: "Electric Guitar",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Flute",
+          name: "Flute",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Harmonica",
+          name: "Harmonica",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Harp",
+          name: "Harp",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Hurdy Gurdy",
+          name: "Hurdy Gurdy",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Keyboard",
+          name: "Keyboard",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Mandolin",
+          name: "Mandolin",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Piano",
+          name: "Piano",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Saxophone",
+          name: "Saxophone",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Synthesizer",
+          name: "Synthesizer",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Theramin",
+          name: "Theramin",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Trombone",
+          name: "Trombone",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Trumpet",
+          name: "Trumpet",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Ukulele",
+          name: "Ukulele",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Violin",
+          name: "Violin",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          instrument: "Vocals",
+          name: "Vocals",
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -144,7 +144,7 @@ module.exports = {
     */
   const Op = Sequelize.Op;
   return queryInterface.bulkDelete('Instruments', {
-        instrument: { [Op.in]: ['Acoustic Guitar', 'Banjo', 'Bass', 'Cello', 'Clarinet',
+            name: { [Op.in]: ['Acoustic Guitar', 'Banjo', 'Bass', 'Cello', 'Clarinet',
                               "Classical Guitar", "Double Bass", "Drums", "Electric Bass", "Electric Guitar", "Flute",
                               "Harmonica", "Harp", "Hurdy Gurdy", "Keyboard", "Mandolin", "Piano",
                               "Saxophone", "Synthesizer", "Theramin", "Trombone", "Trumpet", "Ukulele",

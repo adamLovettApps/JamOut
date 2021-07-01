@@ -28,9 +28,8 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const signup = (user) => async (dispatch) => {
-  console.log("IN THE REDUX StORE!!!!!!!")
-  console.log("USER", user)
-  const { username, email, password, image, city, state, zip, bio } = user;
+
+  const { username, email, password, image, city, state, zip, bio, chosenInstruments, chosenGenres } = user;
   const formData = new FormData();
   formData.append("username", username);
   formData.append("email", email);
@@ -40,12 +39,29 @@ export const signup = (user) => async (dispatch) => {
   formData.append("state", state);
   formData.append("zip", zip);
   formData.append("bio", bio);
+
   const response = await fetch('/api/users', {
     method: 'POST',
     headers: {
       "Content-Type": "multipart/form-data",
     },
     body: formData
+  });
+
+  const instResponse = await fetch(`/api/instruments/${response.data.user.id}`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(chosenInstruments)
+  });
+
+  const genreResponse = await fetch(`/api/instruments/${response.data.user.id}`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(chosenInstruments)
   });
 
   dispatch(setUser(response.data.user));

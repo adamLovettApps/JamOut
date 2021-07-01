@@ -8,97 +8,97 @@ module.exports = {
 
       return queryInterface.bulkInsert('Genres', [
         {
-          genre: "Blues",
+          name: "Blues",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Country",
+          name: "Country",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Dance",
+          name: "Dance",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Electronic",
+          name: "Electronic",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Folk",
+          name: "Folk",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Funk",
+          name: "Funk",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Gospel",
+          name: "Gospel",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Hardcore",
+          name: "Hardcore",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Industrial",
+          name: "Industrial",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Jazz",
+          name: "Jazz",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Latin",
+          name: "Latin",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Metal",
+          name: "Metal",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Pop",
+          name: "Pop",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Punk",
+          name: "Punk",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "R&B",
+          name: "R&B",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Reggae",
+          name: "Reggae",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Rock",
+          name: "Rock",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Ska",
+          name: "Ska",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          genre: "Soul",
+          name: "Soul",
           createdAt: new Date(),
           updatedAt: new Date()
         }
@@ -116,7 +116,7 @@ module.exports = {
     */
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Genres', {
-          genre: { [Op.in]: ["Blues", "Country", "Dance", "Electronic", "Folk", "Funk", "Gospel",
+          name: { [Op.in]: ["Blues", "Country", "Dance", "Electronic", "Folk", "Funk", "Gospel",
                               "Hardcore", "Industrial", "Jazz", "Latin", "Metal", "Pop", "Punk",
                                 "R&B", "Reggae", "Rock", "Ska", "Soul"] }
       }, {});

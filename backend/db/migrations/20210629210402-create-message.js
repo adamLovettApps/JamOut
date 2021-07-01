@@ -8,22 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      conversationId: {
+      ConversationId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Conversations', key: 'id' }
       },
-      userIdTo: {
+      UserIdTo: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Users', key: 'id' }
       },
-      userIdFrom: {
+      UserIdFrom: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Users', key: 'id' }
       },
-      message: {
+      text: {
         allowNull: false,
         type: Sequelize.STRING
       },

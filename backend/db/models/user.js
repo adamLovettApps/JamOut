@@ -79,15 +79,15 @@ module.exports = (sequelize, DataTypes) => {
   
   , {});
   User.associate = function(models) {
-    User.belongsToMany(models.Genre, {through: "usergenre", foreignKey: "userId"})
-    User.belongsToMany(models.Instrument, {through: "userinstrument", foreignKey: "userId"})
-    User.hasMany(models.Song, {foreignKey: "userId"})
-    User.hasMany(models.Conversation, {foreignKey: "userId"})
-    User.hasMany(models.Conversation, {foreignKey: "userId2"})
-    User.hasMany(models.Like, {foreignKey: "userId"})
-    User.hasMany(models.Like, {foreignKey: "userId2"})
-    User.hasMany(models.Message, {foreignKey: "userIdTo"})
-    User.hasMany(models.Message, {foreignKey: "userIdFrom"})
+    User.belongsToMany(models.Genre, {through: "usergenre", foreignKey: "UserId"})
+    User.belongsToMany(models.Instrument, {through: "userinstrument", foreignKey: "UserId"})
+    User.hasMany(models.Song, {foreignKey: "UserId"})
+    User.hasMany(models.Conversation, {foreignKey: "UserId" })
+    User.hasMany(models.Conversation, {foreignKey: "UserId2" })
+    User.hasMany(models.Like, {foreignKey: "UserId"})
+    User.hasMany(models.Like, {foreignKey: "UserId2"})
+    User.hasMany(models.Message, {foreignKey: "UserIdTo"})
+    User.hasMany(models.Message, {foreignKey: "UserIdFrom"})
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
@@ -96,7 +96,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.validatePassword = function (password) {
-    return bcrypt.compareSync(password, this.hashedPassword.toString());
+    return bcrypt.compareSync(password, this.hashedpassword.toString());
   };
 
   User.getCurrentUserById = async function (id) {
@@ -123,7 +123,7 @@ module.exports = (sequelize, DataTypes) => {
     const user = await User.create({
       email, username, hashedpassword, profilephoto, city, state, zip, bio, lat, lng
     });
-    return await User.scope('currentUser').findByPk(user.id);
+    return await User.scope('currentUser').findByPk(user.id,  {raw: true,});
   };
   return User;
 };

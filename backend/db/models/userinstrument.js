@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Userinstrument = sequelize.define('Userinstrument', {
-    userId: {
+    UserId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    instrumentId: {
+    InstrumentId: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
