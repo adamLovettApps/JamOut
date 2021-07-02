@@ -4,12 +4,14 @@ import session from './session'
 import genres from './genres'
 import instruments from './instruments'
 import users from './users';
+import songs from './songs';
 
 const rootReducer = combineReducers({
   session,
   genres,
   instruments,
-  users
+  users,
+  songs
 });
 
 let enhancer;
