@@ -15,7 +15,7 @@
     border-radius: 10px;
     border: 2px solid #3F273F;
     margin-bottom: 40px;
-    margin-right: 120px;
+    margin-right: 70px;
 }
 
 .user-page-profile-container-photo-container img{
@@ -25,7 +25,7 @@
 .user-page-profile-container-information {
     font-family: 'Montserrat', sans-serif;
     color: #F7EDE2;
-    margin-left: -5%;
+    margin-left: -1.8%;
     
     max-width: 600px;
     min-width: 300px;
@@ -34,6 +34,7 @@
     padding-left: 15px;
     padding-top: 0px;
     padding-right: 15px;
+    margin-bottom: 40px;
 
 }
 
@@ -119,6 +120,119 @@
 }
 
 .user-page-profile-container-information-divider {
+    border: none;
+    height: 1px;
+    background-color: #583758;
+}
+
+.audio-player {
+    
+    color: #F7EDE2;
+    background-color:#583758;
+
+}
+
+.rhap_container {
+    background-color:#583758;
+}
+
+.audio-player-container {
+    
+    color: white;
+    margin-left: 15%;
+    
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 10%;
+}
+
+@media only screen and (max-width: 1245px) {
+    .audio-player-container {
+        max-width: 600px;
+    }
+}
+@media only screen and (min-width: 1246px) {
+    .audio-player-container {
+        width: 970px;
+    }
+}
+
+.now-playing {
+    background-color:#583758;
+    text-align: center;
+    padding: 10px;
+    height: 40px;
+    line-height: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+} 
+
+.song-container-song-list {
+    background-color: #583758;
+    padding: 10px;
+    padding-bottom: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.song-container-song-title {
+    margin-bottom: 3px;
+    cursor: pointer;
+    border: 1px solid #3F273F;
+    padding: 5px;
+    background-color: #191019;
+    border-radius: 3px;
+}
+
+.rhap_time {
+    font-family: 'Montserrat', sans-serif;
+    color: #F7EDE2;
+}
+
+.rhap_progress-indicator {
+    color: #3F273F;
+    background-color: #191019;
+}
+
+.rhap_button-clear {
+    color: #191019;
+}
+
+.rhap_progress-bar {
+    background-color: #3F273F;
+    color: #3F273F;
+}
+
+.rhap_download-progress {
+    background-color: #3F273F;
+    color: #3F273F;
+}
+
+.rhap_progress-filled {
+    background-color: #191019;
+    color: #191019;
+}
+
+.rhap_volume-indicator {
+    background-color: #191019;
+    color: #191019;
+}
+
+.rhap_volume-bar {
+    background-color: #3F273F;
+    color: #3F273F;
+}
+
+.audio-player-container-header {
+    font-size: 40px;
+    font-weight: 400;
+    margin-left: 5px;
+    margin-bottom: -5px;
+}
+
+.audio-player-container-header-divider {
     border: none;
     height: 1px;
     background-color: #583758;
