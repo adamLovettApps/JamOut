@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import genres from './genres'
 import instruments from './instruments'
+import users from './users';
 
 const rootReducer = combineReducers({
   session,
   genres,
-  instruments
+  instruments,
+  users
 });
 
 let enhancer;

@@ -79,8 +79,8 @@ module.exports = (sequelize, DataTypes) => {
   
   , {});
   User.associate = function(models) {
-    User.belongsToMany(models.Genre, {through: "usergenre", foreignKey: "UserId"})
-    User.belongsToMany(models.Instrument, {through: "userinstrument", foreignKey: "UserId"})
+    User.belongsToMany(models.Genre, {through: "Usergenre", foreignKey: "UserId"})
+    User.belongsToMany(models.Instrument, {through: "Userinstrument", foreignKey: "UserId"})
     User.hasMany(models.Song, {foreignKey: "UserId"})
     User.hasMany(models.Conversation, {foreignKey: "UserId" })
     User.hasMany(models.Conversation, {foreignKey: "UserId2" })

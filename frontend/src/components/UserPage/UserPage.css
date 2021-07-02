@@ -1,0 +1,125 @@
+.user-page-profile-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 15%;
+    margin-right:5%;
+    margin-top: 150px;
+    justify-content: flex-start;
+}
+
+.user-page-profile-container-photo-container {
+    height: 350px;
+    padding: 5px;
+    background-color: #0D080D;
+    border-radius: 10px;
+    border: 2px solid #3F273F;
+    margin-bottom: 40px;
+    margin-right: 120px;
+}
+
+.user-page-profile-container-photo-container img{
+    border-radius: 10px;
+}
+
+.user-page-profile-container-information {
+    font-family: 'Montserrat', sans-serif;
+    color: #F7EDE2;
+    margin-left: -5%;
+    
+    max-width: 600px;
+    min-width: 300px;
+    /* border: 1px solid #583758; */
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 0px;
+    padding-right: 15px;
+
+}
+
+.user-page-profile-container-information-username-header { 
+    font-size: 40px;
+    font-weight: 600;
+    margin-left: 5px;
+    font-family: 'Montserrat', sans-serif;
+    color: #F7EDE2;
+    position:relative;
+    top: 130px;
+    left: 15%;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 800px;
+}
+
+.user-page-profile-container-information-username { 
+    font-size: 48px;
+    font-weight: 600;
+    margin-left: 5px;
+    margin-bottom: -10px;
+}
+
+.user-page-profile-container-information-username-divider { 
+}
+
+.user-page-profile-container-information-location-header { 
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.user-page-profile-container-information-location-divider { 
+    margin-top: -7px;
+}
+
+.user-page-profile-container-information-location { 
+    font-size: 14px;
+    margin-left: 5px;
+
+}
+.user-page-profile-container-information-instruments-header { 
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 5px;
+
+}
+.user-page-profile-container-information-instruments-divider { 
+    margin-top: -7px;
+
+}
+.user-page-profile-container-information-instruments { 
+    
+    font-size: 14px;
+    margin-left: 5px;
+}
+.user-page-profile-container-information-genres-header { 
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 5px;
+
+}
+.user-page-profile-container-information-genres-divider { 
+    margin-top: -7px;
+}
+.user-page-profile-container-information-genres { 
+    font-size: 14px;
+    margin-left: 5px; 
+}
+.user-page-profile-container-information-bio-header { 
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.user-page-profile-container-information-bio-divider {
+    margin-top: -7px;
+}
+.user-page-profile-container-information-bio {
+    font-size: 14px;
+    margin-left: 5px; 
+}
+
+.user-page-profile-container-information-divider {
+    border: none;
+    height: 1px;
+    background-color: #583758;
+}
