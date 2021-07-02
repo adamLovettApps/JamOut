@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormModal";
+import UserPage from "./components/UserPage";
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -14,7 +15,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <BrowserRouter>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -24,9 +25,12 @@ function App() {
           {/* <Route path="/signup">
             <SignupFormPage />
           </Route> */}
+          <Route path="/users/:id">
+            <UserPage />
+          </Route>
         </Switch>
       )}
-    </>
+    </BrowserRouter>
   );
 }
 

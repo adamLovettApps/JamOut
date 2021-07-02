@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const Sequelize = require('sequelize')
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Userinstrument, Usergenre } = require('../../db/models');
+const { User, Userinstrument, Usergenre, Instrument, Genre, Song } = require('../../db/models');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3')
 const fetch = require("node-fetch");
 const router = express.Router();
@@ -48,6 +48,28 @@ router.post(
     return res.json({
       user
     });
+  })
+);
+
+router.get('/:id', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id);
+  console.log("HEREEEEEEEEEEEEE!!!!!!!");
+  const user = await User.findByPk(id, {
+      include: [
+          {
+            model: Instrument,
+          },
+          {
+                model: Genre
+              },
+          {
+            model: Song
+          }
+        ],
+      
+    });
+
+    res.json(user);
   })
 );
 

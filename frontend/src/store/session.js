@@ -56,12 +56,12 @@ export const signup = (user) => async (dispatch) => {
     body: JSON.stringify(chosenInstruments)
   });
 
-  const genreResponse = await fetch(`/api/instruments/${response.data.user.id}`, {
+  const genreResponse = await fetch(`/api/genres/${response.data.user.id}`, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(chosenInstruments)
+    body: JSON.stringify(chosenGenres)
   });
 
   dispatch(setUser(response.data.user));
