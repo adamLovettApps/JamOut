@@ -140,23 +140,3 @@ select[multiple] option:checked {
     padding-right: -10px;
     width: 101%;
 }
-
-.sign-up-nav-button {
-    font-family: 'Montserrat', sans-serif;
-    color: #F7F2F7;
-    border-radius: 2px;
-    background-color: rgba(99,100,126, 0.9);
-    font-size: 14px;
-    height: 30px;
-    border: 1px solid #AAABBC;
-    border-radius: 5px;
-    margin-top: 15px;
-    font-weight: 600;
-    width: 80px;
-    margin-left: 10px;
-    margin-right: 20px;
-}
-
-.sign-up-nav-button:hover {
-    background-color: rgba(63,64,80, 0.9);
-}

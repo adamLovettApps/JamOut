@@ -1,0 +1,155 @@
+.add-song-form-management {
+    max-width: 1000px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin-top: 47px; */
+    margin-top: -30px;
+    margin-bottom: -180px;
+}
+
+.add-song-divider {
+    max-width: 700x;
+}
+.add-song-divider-container {
+    max-width: 788px;
+}
+.song-upload-selector { 
+    position: relative;
+    height: 40px;
+    width: 280px;
+    /* margin-top: -27px; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+}
+.song-upload-selector > input[type="file"] { 
+    border-radius: 2px;
+    position: absolute; 
+    opacity: 0; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0 
+}
+.song-upload-selector > label { 
+    border-radius: 2px;
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    left: 0; 
+    bottom: 0; 
+    background-color: #aaabbc; 
+    color: #F7F2F7; 
+    line-height: 30px; 
+    text-align: center; 
+    cursor: pointer; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.add-song-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: -5px;
+    margin-left: 5px;
+}
+
+
+.song-upload-selected { 
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    width: 280px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+}
+.song-upload-selected > input[type="file"] { 
+    border-radius: 2px;
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    left: 0; 
+    bottom: 0; 
+    opacity: 0; 
+    
+}
+.song-upload-selected > label { 
+    border-radius: 2px;
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    left: 0; 
+    bottom: 0; 
+    background-color: #767793; 
+    color: #F7F2F7;
+    line-height: 30px; 
+    text-align: center; 
+    cursor: pointer; 
+}
+
+
+.flex-form {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.form-field-button-song-upload-container {
+    margin-top: 12px;
+    width: 600px;
+}
+
+.form-field-button-song-upload {
+    font-family: 'Montserrat', sans-serif;
+    color: #F7F2F7;
+    border-radius: 2px;
+    background-color: #3F273F;
+    font-size: 18px;
+    width: 243px;
+    height: 40px;
+    border: none;
+    margin-top: -20px;
+    margin-left: 43px;
+}
+
+.form-field-button-song-upload:hover {
+    background-color: #261726;
+}
+
+.choose-song-text {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    margin-top: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+.form-field-input-song {
+    width: 100%;
+    line-height:30px;
+    font-size: 14px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    /* background-color: #583758; */
+    background-color: #F7F2F7;
+    color: #0D080D;
+    /* border: 1px solid #7D4F7D; */
+    border: 1px solid #3F273F;
+    border-radius: 2px;
+    margin-right: 40px;
+    width: 220px;
+    padding-left: 5px;
+}
+
+.song-title-text-div {
+    padding-bottom: 40px;
+}

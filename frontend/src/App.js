@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormModal";
+import LandingPage from "./components/LandingPage";
 import UserPage from "./components/UserPage";
-// import LoginFormPage from "./components/LoginFormPage";
+import SearchResults from "./components/SearchResults";
+import Footer from "./components/Footer";
+import DeleteProfile from "./components/DeleteProfile";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -19,17 +21,23 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          {/* <Route path="/login" >
-            <LoginFormPage />
-          </Route> */}
-          {/* <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
+          <Route exact path="/">
+            <LandingPage></LandingPage>
+          </Route>
+          <Route path="/searchresults">
+            <SearchResults></SearchResults>
+          </Route>
           <Route path="/users/:id">
             <UserPage />
           </Route>
+          <Route path="/deleteProfile">
+            <DeleteProfile></DeleteProfile>
+          </Route>
         </Switch>
+        
       )}
+      <Footer></Footer>
+
     </BrowserRouter>
   );
 }

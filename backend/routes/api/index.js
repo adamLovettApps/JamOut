@@ -2,7 +2,9 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const genreRouter = require('./genres.js');
-const instrumentRouter = require('./instruments.js')
+const instrumentRouter = require('./instruments.js');
+const searchRouter = require('./search');
+const songRouter =require('./songs')
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
@@ -46,4 +48,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/genres', genreRouter);
 router.use('/instruments', instrumentRouter);
+router.use('/search', searchRouter);
+router.use('/songs', songRouter);
+
 module.exports = router;

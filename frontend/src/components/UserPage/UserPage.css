@@ -1,21 +1,50 @@
+.user-page-outer-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 986px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .user-page-profile-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 15%;
-    margin-right:5%;
-    margin-top: 150px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-top: 60px;
     justify-content: flex-start;
+    max-width: 1000px;
 }
+
+.edit-profile-popup-button {
+    /* margin-left: 57.4%; */
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    border-radius: 2px;
+    background-color: rgba(63, 39, 63, 0.9);
+    font-size: 14px;
+    
+    height: 30px;
+    border: 1px solid #7D4F7D;
+    border-radius: 10px;
+    font-weight: 600;
+    position: relative;
+    bottom: 10px;
+}
+
+
 
 .user-page-profile-container-photo-container {
     height: 350px;
-    padding: 5px;
-    background-color: #0D080D;
-    border-radius: 10px;
-    border: 2px solid #3F273F;
+    /* padding: 5px; */
+    /* background-color: #0D080D; */
+    border-radius: 12px;
+    border: 1px solid #3F273F;
     margin-bottom: 40px;
-    margin-right: 70px;
+    margin-right: 70px;    
+    box-shadow: rgba(63,39,63, 0.5) 1px 1px 2px 0px, rgba(63,39, 63, 0.25) 0px 2px 6px 2px;
+
 }
 
 .user-page-profile-container-photo-container img{
@@ -24,8 +53,8 @@
 
 .user-page-profile-container-information {
     font-family: 'Montserrat', sans-serif;
-    color: #F7EDE2;
-    margin-left: -1.8%;
+    color: #0D080D;
+    margin-left: -1.7%;
     
     max-width: 600px;
     min-width: 300px;
@@ -43,13 +72,14 @@
     font-weight: 600;
     margin-left: 5px;
     font-family: 'Montserrat', sans-serif;
-    color: #F7EDE2;
+    color: #0D080D;
     position:relative;
     top: 130px;
     left: 15%;
     display: flex;
     justify-content: flex-start;
     max-width: 800px;
+    
 }
 
 .user-page-profile-container-information-username { 
@@ -57,6 +87,10 @@
     font-weight: 600;
     margin-left: 5px;
     margin-bottom: -10px;
+    text-shadow:1px 1px 3px rgba(63,39,63, 0.5);
+    line-height: 48px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .user-page-profile-container-information-username-divider { 
@@ -127,22 +161,26 @@
 
 .audio-player {
     
-    color: #F7EDE2;
-    background-color:#583758;
+    color: #0D080D;
+    background-color:#F7F2F7;
+    border: 1px solid rgba(63,39, 63, 1);
+    box-shadow: none;
 
 }
 
 .rhap_container {
-    background-color:#583758;
+    background-color: #E8E8Ed;
+    border: 1px solid rgba(63,39, 63, 0.2);
+    box-shadow: none;
 }
 
 .audio-player-container {
     
-    color: white;
-    margin-left: 15%;
+    color: #0D080D;
     
     font-family: 'Montserrat', sans-serif;
-    margin-right: 10%;
+
+    max-width: 1200px;
 }
 
 @media only screen and (max-width: 1245px) {
@@ -154,75 +192,89 @@
     .audio-player-container {
         width: 970px;
     }
+    .user-page-profile-container-information {
+        width: 600px;
+    }
 }
 
 .now-playing {
-    background-color:#583758;
+    font-family: 'Montserrat', sans-serif;
+    background-color:#E8E8Ed;
     text-align: center;
     padding: 10px;
     height: 40px;
-    line-height: 40px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 0px;
+    border-top: 1px solid rgba(63,39, 63, 0.2);
+    border-left: 1px solid rgba(63,39, 63, 0.2);
+    border-right: 1px solid rgba(63,39, 63, 0.2);
+    color: #0D080D;
 } 
 
 .song-container-song-list {
-    background-color: #583758;
+    background-color: #E8E8Ed;
     padding: 10px;
     padding-bottom: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    border-bottom: 1px solid rgba(63,39, 63, 0.2);
+    border-left: 1px solid rgba(63,39, 63, 0.2);
+    border-right: 1px solid rgba(63,39, 63, 0.2);
+    margin-bottom: 50px;
 }
 
 .song-container-song-title {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     cursor: pointer;
-    border: 1px solid #3F273F;
+    border: 1px solid rgba(63,39, 63, 0.4);
     padding: 5px;
-    background-color: #191019;
+    background-color: #AA74AA;
     border-radius: 3px;
+    color: #F7F2F7;
+    display: flex;
+    justify-content: space-between;
 }
 
 .rhap_time {
     font-family: 'Montserrat', sans-serif;
-    color: #F7EDE2;
+    color: #0D080D;
 }
 
 .rhap_progress-indicator {
-    color: #3F273F;
-    background-color: #191019;
+    color: #724672;
+    background-color: #724672;
 }
 
 .rhap_button-clear {
-    color: #191019;
+    color: #724672;
 }
 
 .rhap_progress-bar {
-    background-color: #3F273F;
-    color: #3F273F;
+    background-color: #A267A2;
+    color: #A267A2;
 }
 
 .rhap_download-progress {
-    background-color: #3F273F;
-    color: #3F273F;
+    background-color: #724672;
+    color: #724672;
 }
 
 .rhap_progress-filled {
-    background-color: #191019;
-    color: #191019;
+    background-color: #3F273F;
+    color: #3F273F;
 }
 
 .rhap_volume-indicator {
-    background-color: #191019;
-    color: #191019;
+    background-color: #724672;
+    color: #724672;
 }
 
 .rhap_volume-bar {
-    background-color: #3F273F;
-    color: #3F273F;
+    background-color: #A267A2;
+    color: #A267A2;
 }
 
 .audio-player-container-header {
@@ -230,10 +282,23 @@
     font-weight: 400;
     margin-left: 5px;
     margin-bottom: -5px;
+    color: #0D080D;
 }
 
 .audio-player-container-header-divider {
     border: none;
     height: 1px;
-    background-color: #583758;
+    background-color: rgba(63,39, 63, 1);
+}
+
+.fa-times-circle {
+    color: #F7F2F7;
+}
+
+.fa-times-circle:hover {
+    color: rgba(63,39, 63, 1);
+}
+
+.no-songs-spacer {
+    margin-top: 60px;
 }

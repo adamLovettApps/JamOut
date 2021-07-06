@@ -1,0 +1,59 @@
+.search-result-single-card-container {
+    display: flex;
+    max-width: 700px;
+    justify-content:left;
+    font-family: 'Montserrat', sans-serif;
+    color: #0D080D;
+
+}
+
+.search-result-single-card-container-information {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+.search-result-single-card-container-image {
+    box-shadow: rgba(63,39,63, 0.5) 1px 1px 2px 0px, rgba(63,39, 63, 0.25) 0px 2px 6px 2px;
+    border: 1px solid #3F273F;
+    height: 200px;
+    border-radius: 5px;
+    background-color: #3F273F;
+}
+
+.search-result-single-card-container-information-username {
+    text-shadow:1px 1px 3px rgba(63,39,63, 0.5);
+    font-size: 22px;
+    font-weight: 600;
+
+}
+
+.search-result-link {
+    text-decoration: none;
+}
+
+.search-result-single-card-container-image-img {
+    border-radius: 5px;
+}
+
+.search-result-single-card-container-information-location {
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.search-result-single-card-container-information-instruments {
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.search-result-single-card-container-information-genres {
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.search-result-single-card-container-information-distance {
+    font-size: 15px;
+    margin-top: 5px;
+}

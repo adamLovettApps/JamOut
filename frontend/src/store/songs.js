@@ -1,3 +1,4 @@
+import { fetch } from "./csrf.js";
 const SET_SONG = "songs/set_song";
 
 const setSongs = (song) => ({
@@ -9,6 +10,7 @@ export const setCurrentSong = (song) => async(dispatch) => {
     dispatch(setSongs(song));
     return;
 };
+
 
 const initialState = {currentSong: null}
 
@@ -22,5 +24,7 @@ const reducer = (state = initialState, action) => {
             return state;
     }
 }
+
+
 
 export default reducer;
