@@ -60,7 +60,12 @@ export const removeASong = (userId, id) => async(dispatch) => {
     dispatch(updateUser(user.data));
 }
 
+export const deleteUser = (id) => async(dispatch) => {
 
+    await fetch(`/api/users/${id}`, {
+        method: "DELETE"
+    });
+}
 
 const initialState = {currentUser: null};
 

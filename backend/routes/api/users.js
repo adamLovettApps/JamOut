@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const Sequelize = require('sequelize')
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Userinstrument, Usergenre, Instrument, Genre, Song } = require('../../db/models');
+const { User, Userinstrument, Usergenre, Instrument, Genre, Song, Conversation, Message, Like } = require('../../db/models');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3')
 const fetch = require("node-fetch");
 const router = express.Router();
@@ -53,7 +53,6 @@ router.post(
 
 router.get('/:id', asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id);
-  console.log("HEREEEEEEEEEEEEE!!!!!!!");
   const user = await User.findByPk(id, {
       include: [
           {
@@ -156,6 +155,59 @@ router.put('/updateUser', asyncHandler(async(req, res) => {
   // await user.save();
 
   res.send(user);
-}))
+}));
+
+router.delete('/:id', asyncHandler(async(req, res) => {
+    const id = parseInt(req.params.id);
+    await Userinstrument.destroy({
+      where: {
+        UserId: id
+      }
+    });
+
+    await Usergenre.destroy({
+      where: {
+        UserId: id
+      }
+    });
+
+    await Song.destroy({
+      where: {
+        UserId: id
+      }
+    });
+
+    await Conversation.destroy({
+      where: {
+        UserId: id
+      }
+    });
+
+    await Conversation.destroy({
+      where: {
+        UserId2: id
+      }
+    });
+
+    await Message.destroy({
+      where: {
+        UserIdTo: id
+      }
+    });
+
+    await Message.destroy({
+      where: {
+        UserIdFrom: id
+      }
+    });
+
+    await User.destroy({
+      where: {
+        id: id
+      }
+    });
+
+    res.send();
+}));
 
 module.exports = router;

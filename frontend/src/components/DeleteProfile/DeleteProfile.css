@@ -1,0 +1,32 @@
+.delete-profile-container {
+    margin-top: 90px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 542px;
+}
+
+.delete-profile-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.delete-profile-header {
+    font-size: 48px;
+}
+
+.cancel-delete-button {
+    margin-right: 20px;
+    width: 100px;
+    
+}
+
+.confirm-delete-button {
+    margin-left: 20px;
+    width: 100px;
+}

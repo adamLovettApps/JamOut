@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import UserPage from "./components/UserPage";
 import SearchResults from "./components/SearchResults";
 import Footer from "./components/Footer";
-// import LoginFormPage from "./components/LoginFormPage";
+import DeleteProfile from "./components/DeleteProfile";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -29,6 +29,9 @@ function App() {
           </Route>
           <Route path="/users/:id">
             <UserPage />
+          </Route>
+          <Route path="/deleteProfile">
+            <DeleteProfile></DeleteProfile>
           </Route>
         </Switch>
         

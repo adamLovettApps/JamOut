@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import DeleteProfileModal from "../Footer/DeleteProfileModal";
+import LoginFormModal from '../LoginFormModal';
+import DeleteProfileModal from "../DeleteProfile";
+
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
@@ -43,10 +45,9 @@ function ProfileButton({ user }) {
           <div className="log-out-dropdown" onClick={logout}>
             <Link className="log-out-dropdown-nav" to="/">Log Out</Link>
           </div>
-          {/* <div className="delete-profile-dropdown">
+          <div className="delete-profile-dropdown">
             <Link className="delete-profile-dropdown-nav" to={`/deleteProfile/`}>Delete Profile</Link>
-          </div> */}
-          <div><DeleteProfileModal></DeleteProfileModal></div>
+          </div>
         </div>
       )}
     </>
