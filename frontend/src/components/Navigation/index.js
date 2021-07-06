@@ -25,12 +25,16 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="nav-bar-container">
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+        <div>
+          <NavLink className="nav-bar-home-link" exact to="/"><i class="fas fa-home"></i></NavLink>
+        </div>
+        <div className="logo-container">
+          <img alt="Jam Out Logo" src="https://jamout.s3.us-west-1.amazonaws.com/jamout.png"></img>
+        </div>
+        <div>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+        </div>
+  
     </div>
   );
 }

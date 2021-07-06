@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import DeleteProfileModal from "../Footer/DeleteProfileModal";
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
@@ -30,17 +32,22 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="nav-action-button" onClick={openMenu}>
+        <i class="fas fa-bars"></i>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+        <div className="profile-dropdown">
+          <div className="profile-link-dropdown">
+            <Link className="profile-link-dropdown-nav" to={`/users/${user.id}`}>Your Profile</Link>
+          </div>
+          <div className="log-out-dropdown" onClick={logout}>
+            <Link className="log-out-dropdown-nav" to="/">Log Out</Link>
+          </div>
+          {/* <div className="delete-profile-dropdown">
+            <Link className="delete-profile-dropdown-nav" to={`/deleteProfile/`}>Delete Profile</Link>
+          </div> */}
+          <div><DeleteProfileModal></DeleteProfileModal></div>
+        </div>
       )}
     </>
   );

@@ -1,13 +1,124 @@
 .profile-dropdown {
+  /* position: absolute;
+  margin-right: 100px; */
+
   position: absolute;
+  top: 70px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(99,100,126, 0.9);
+  width: 112px;
+  border: 1px solid #AAABBC;
+  align-items: flex-end;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #F7F2F7;
+  font-family: 'Montserrat', sans-serif;
+  height: 85px;
+  border-radius: 5px;
 }
 
 .nav-bar-container {
   width: 100%;
   padding-right: 10px;
-  height: 50px;
-  position: fixed;
-  border-bottom: 1px solid #3F4050;
-  top: 0;
-  background-color: #281928;
+  height: 100px;
+  border-bottom: 5px solid #AAABBC;
+  margin-top: -5px;
+  line-height: 80px;
+  background-color: #3F273F;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar-home-link {
+  text-decoration: none;
+}
+
+.fa-home {
+  color: #F7F2F7;
+  margin-left: 20px;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.fa-home:hover {
+  color: #AAABBC;
+}
+
+.nav-action-button {
+  margin-top: 30px;
+  margin-right: 20px;
+  color: #F7F2F7;
+  background-color: rgba(99,100,126, 0);
+  height: 30px;
+  width: 30px;
+  border: none;
+  font-size: 30px;
+}
+
+.nav-action-button:hover  {
+  color: #AAABBC;
+}
+
+.log-out-button {
+  margin-top: -100px;
+}
+
+.profile-link-dropdown {
+  margin-bottom: 5px;
+  margin-top: -20px;
+  height: 20px;
+}
+
+.profile-link-dropdown-nav {
+  text-decoration: none;
+  color: #F7F2F7;
+  font-weight: 500;
+  height: 20px;
+}
+
+.profile-link-dropdown-nav:hover {
+  color: #3F273F;
+}
+
+.log-out-dropdown {
+  
+  color: #F7F2F7;
+  font-weight: 500;
+  height: 20px;
+}
+
+.log-out-dropdown-nav {
+  text-decoration: none;
+  color: #F7F2F7;
+  font-weight: 500;
+  height: 20px;
+}
+
+
+.log-out-dropdown-nav:hover {
+  color: #3F273F;
+}
+
+.logo-container{
+  margin-top: 40px;
+}
+
+.delete-profile-dropdown {
+  color: black;
+  margin-top: 5px;
+  height: 20px;
+}
+
+.delete-profile-dropdown-nav {
+  text-decoration: none;
+  color: #F7F2F7;
+  font-weight: 500;
+  height: 20px;
+}
+
+.delete-profile-dropdown-nav:hover {
+  color: #3F273F;
 }

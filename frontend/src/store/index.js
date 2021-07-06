@@ -5,13 +5,15 @@ import genres from './genres'
 import instruments from './instruments'
 import users from './users';
 import songs from './songs';
+import search from './search';
 
 const rootReducer = combineReducers({
   session,
   genres,
   instruments,
   users,
-  songs
+  songs,
+  search
 });
 
 let enhancer;

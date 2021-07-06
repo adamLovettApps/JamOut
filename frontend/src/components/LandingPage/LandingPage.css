@@ -1,0 +1,49 @@
+
+.splash-text {
+    color: #F7F2F7;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    text-shadow:-2px -2px 20px rgba(170, 116, 170, 1), 3px 3px 0px #191019;
+    margin-bottom: 30px;
+}
+
+
+
+.splash-page-banner {
+    /* background-image: url("https://d31oyr2ur6cysk.cloudfront.net/eyJidWNrZXQiOiJqYW1vdXQiLCJrZXkiOiJoZWFkZXI0LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjE0MDAsImhlaWdodCI6MzAwLCJmaXQiOiJjb3ZlciJ9fX0="); */
+    /* background-position: 50% 50%; */
+    background-size: 100%;
+    max-width: 1400px;
+    height: 300px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #3F273F;
+    margin-left: auto;
+    margin-right: auto;
+    filter: opacity(90%);
+    border-radius: 10px;
+    margin-top: 80px;
+    border: 3px solid #724672;
+    margin-bottom: 385px;
+}
+
+.splash-page-banner-image{
+    position:absolute;
+    z-index: -1;
+    border-radius: 10px;
+
+}
+
+.welcome-header {
+    max-width: 700px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    color: #0D080D;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    text-shadow: 0 0 1px #AAABBC, 0 0 5px #A267A2;
+}

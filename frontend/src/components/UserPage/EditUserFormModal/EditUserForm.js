@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
-import { getGenres } from "../../store/genres";
-import { getInstruments } from "../../store/instruments";
-import './SignupForm.css';
+import { useParams } from "react-router-dom";
+import { getGenres } from "../../../store/genres";
+import { getInstruments } from "../../../store/instruments"
+import { getNewUserInformation } from "../../../store/users";
+import './EditUserForm.css';
 
-function SignupFormPage() {
+function EditUserForm({setShowModal}) {
   const dispatch = useDispatch();
+  const {id} = useParams();
   const sessionUser = useSelector((state) => state.session.user);
-  const genres = useSelector((state) => state.genres.all)
-  const instruments = useSelector((state) => state.instruments.all)
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const genres = useSelector((state) => state.genres.all);
+  const instruments = useSelector((state) => state.instruments.all);
+  const currentUser = useSelector((state) => state.users.currentUser);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [image, setImage] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
@@ -24,44 +23,39 @@ function SignupFormPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [chosenInstruments, setChosenInstruments] = useState([]);
   const [chosenGenres, setChosenGenres] = useState([]);
+  const previousChosenGenres = currentUser.Genres.map((genre) => genre.id);
+  const previousChosenInstruments = currentUser.Instruments.map((instrument) => instrument.id);
   
   useEffect(() => {
       dispatch(getGenres());
       dispatch(getInstruments());
+      setCity(currentUser.city);
+      setState(currentUser.state);
+      setZip(currentUser.zip);
+      setBio(currentUser.bio);
+      
+      console.log(previousChosenGenres, "PREV")
+      setChosenGenres(previousChosenGenres);
+      setChosenInstruments(previousChosenInstruments);
       setIsLoaded(true);
+
   }, [dispatch])
 
-  if (sessionUser) return <Redirect to="/" />;
 
 
   if (!isLoaded) {
     return null;
   }
-  const updateFile = (e) => {
-    const file = e.target.files[0];
-    const box = document.getElementById('file-input-label');
-    box.innerText = "Photo Chosen";
-    box.style.backgroundColor = "#767793";
-    if (file) setImage(file);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      if (chosenInstruments.length !== 0 && chosenGenres.length !== 0){
-        if (image !== "") {
-        setErrors([]);
-        return dispatch(sessionActions.signup({ email, username, password, city, state, zip, bio, image, chosenInstruments, chosenGenres }))
-          .catch(res => {
-            if (res.data && res.data.errors) setErrors(res.data.errors);
-          });
-        }
-        return setErrors(['Must add a profile photo']);
-      }
-        return setErrors(['Must select at least one instrument and genre']);
-        
-    }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    dispatch(getNewUserInformation(id, city, state, zip, bio, chosenInstruments, chosenGenres));
+    setShowModal(false);
+    // if (password === confirmPassword) {
+    //   setErrors([]);
+      
+    // }
+    // return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   const handleInstruments = (e) => {
@@ -76,32 +70,11 @@ function SignupFormPage() {
 
   return (
     <div className="sign-up-form-container">
-      <div className="sign-up-form-header">Sign Up</div>
+      <div className="sign-up-form-header">Edit Your Profile</div>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <div className="form-field-input-container">
-          
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder = "Email"
-            required
-            className="form-field-input"
-          />
-        </div>
-        <div className="form-field-input-container">
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-            required
-            className="form-field-input"
-          />
-        </div>
         <div className="form-field-input-container">
         
           <input
@@ -144,7 +117,7 @@ function SignupFormPage() {
             className="form-field-textarea"
           />
         </div>
-        <div className="form-field-input-container">
+        {/* <div className="form-field-input-container">
           
           <input
             type="password"
@@ -165,11 +138,11 @@ function SignupFormPage() {
             required
             className="form-field-input"
           />
-        </div>
+        </div> */}
         <div className="form-field-input-container-multi">
         <div className="sign-up-multi-select-label"><label>Instruments Played</label></div>
         <div><select className="sign-up-multi-select" name="instruments" multiple onChange={handleInstruments}>
-          {instruments.map((instrument) => (<option value={instrument.id}>{instrument.name}</option>))}
+          {instruments.map((instrument) => (<option value={instrument.id} selected={previousChosenInstruments.includes(instrument.id)}>{instrument.name}</option>))}
       
         </select>
         </div>
@@ -177,22 +150,18 @@ function SignupFormPage() {
         <div className="form-field-input-container-multi">
         <div className="sign-up-multi-select-label"><label>Genres Played</label></div>
         <div className="sign-up-multi-select-container"><select className="sign-up-multi-select" name="genres" multiple onChange={handleGenres}>
-          {genres.map((genre) => (<option value={genre.id}>{genre.name}</option>))}
+          {genres.map((genre) => (<option value={genre.id} selected={previousChosenGenres.includes(genre.id)}>{genre.name}</option>))}
         </select>
         </div>
         </div>
         
         
-        <div className="file-container">
-        <label className="file-input-label" for="file-input" id="file-input-label">Profile Photo</label>
-          <input type="file" id="file-input-box" accept="image/*" onChange={updateFile} />
-        </div>
         <div className="form-field-button-container">
-        <button type="submit" className="form-field-button">Sign Up</button>
+        <button type="submit" className="form-field-button">Edit Profile</button>
         </div>
       </form>
     </div>
   );
 }
 
-export default SignupFormPage;
+export default EditUserForm;

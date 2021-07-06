@@ -1,0 +1,24 @@
+.footer-container {
+    height: 100px;
+    background-color: #3F273F;
+    bottom: 0;
+    width: 100%;
+    border-top: 5px solid #AAABBC;
+    margin-top: 200px;
+}
+
+.footer-info-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    color: #F7F2F7;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 24px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #F7F2F7;
+}
