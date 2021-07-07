@@ -3,7 +3,7 @@
   margin-right: 100px; */
 
   position: absolute;
-  top: 70px;
+  top: 90px;
   right: 15px;
   display: flex;
   flex-direction: column;
@@ -34,17 +34,22 @@
 
 .nav-bar-home-link {
   text-decoration: none;
+  
 }
 
 .fa-home {
   color: #F7F2F7;
   margin-left: 20px;
   font-size: 30px;
-  margin-top: 30px;
+  margin-top: 80px;
 }
 
 .fa-home:hover {
   color: #AAABBC;
+}
+
+.action-button-container {
+  margin-bottom: -8px;
 }
 
 .nav-action-button {
@@ -56,6 +61,8 @@
   width: 30px;
   border: none;
   font-size: 30px;
+  margin-top: 30px;
+  
 }
 
 .nav-action-button:hover  {
@@ -121,4 +128,8 @@
 
 .delete-profile-dropdown-nav:hover {
   color: #3F273F;
+}
+
+.session-links {
+  margin-top: 45px;
 }

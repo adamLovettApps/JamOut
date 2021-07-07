@@ -31,7 +31,7 @@ function Navigation({ isLoaded }){
         <div className="logo-container">
           <img alt="Jam Out Logo" src="https://jamout.s3.us-west-1.amazonaws.com/jamout.png"></img>
         </div>
-        <div>
+        <div className="session-links">
         {isLoaded && sessionLinks}
         </div>
   
