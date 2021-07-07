@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 const csurf = require('csurf');
@@ -6,11 +7,13 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { environment } = require('./config');
 const { ValidationError } = require('sequelize');
+const { port } = require('./config');
 
 const routes = require('./routes');
 const isProduction = environment === 'production';
 
-const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http)
 
 app.use(morgan('dev'));
 
@@ -74,4 +77,6 @@ app.use((err, _req, res, _next) => {
   });
 });
 
-module.exports = app;
+
+
+module.exports = {app, http };
