@@ -229,9 +229,9 @@
 .song-container-song-title {
     margin-bottom: 2px;
     cursor: pointer;
-    border: 1px solid rgba(63,39, 63, 0.4);
+    border: 2px solid #724672;
     padding: 5px;
-    background-color: #AA74AA;
+    background-color: rgba(63, 39,63 , .9);
     border-radius: 3px;
     color: #F7F2F7;
     display: flex;
@@ -296,7 +296,7 @@
 }
 
 .fa-times-circle:hover {
-    color: rgba(63,39, 63, 1);
+    color: #724672;
 }
 
 .no-songs-spacer {
