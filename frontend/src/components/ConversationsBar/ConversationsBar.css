@@ -1,0 +1,8 @@
+.conversations-bar-container {
+    width: 200px;
+    height: 600px;
+    position: absolute;
+    right: 0;
+    background-color: #F7F2F7;
+    border: 2px solid #3F273F;
+}
