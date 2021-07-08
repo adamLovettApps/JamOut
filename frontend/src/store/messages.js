@@ -15,10 +15,12 @@ const setMessages = (messages, conversation) => ({
 });
 
 export const getAllMessages = (id) => async(dispatch) => {
-    const res = await fetch(`/api/conversations/messages/${id}`);
-    const conversation = await res.json();
-    console.log(conversation)
-    dispatch(setMessages(conversation.Messages, conversation));
+    if (id) {
+        const res = await fetch(`/api/conversations/messages/${id}`);
+        const conversation = await res.json();
+        console.log(conversation)
+        dispatch(setMessages(conversation.Messages, conversation));
+    }
 };
 
 const initialState = {};
