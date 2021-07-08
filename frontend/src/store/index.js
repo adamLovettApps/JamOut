@@ -6,6 +6,8 @@ import instruments from './instruments'
 import users from './users';
 import songs from './songs';
 import search from './search';
+import conversations from './conversations';
+import messages from './messages';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +15,9 @@ const rootReducer = combineReducers({
   instruments,
   users,
   songs,
-  search
+  search,
+  conversations,
+  messages
 });
 
 let enhancer;

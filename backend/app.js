@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const { environment } = require('./config');
 const { ValidationError } = require('sequelize');
 const { port } = require('./config');
-
+const {Conversation, Message} = require("./db/models")
 const routes = require('./routes');
 const isProduction = environment === 'production';
 
@@ -76,6 +76,47 @@ app.use((err, _req, res, _next) => {
     stack: isProduction ? null : err.stack
   });
 });
+
+io.on('connection', async(socket) => {
+  socket.on('join', async (conversationId) => {
+      const conversation = await Conversation.findByPk(conversationId);
+      socket.join(conversation.id, async () => {
+        console.log('joined');
+      });
+  });
+
+  const conversations = await Conversation.findAll();
+  for (let i = 0; i < conversations.length; i++) {
+
+    socket.on(conversations[i].id, async({message, id, username}) => {
+
+      
+
+      let conversation = await Conversation.findByPk(conversations[i].id);
+      conversation = conversation.dataValues;
+      const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
+      const newMessage = await Message.create({
+        ConversationId : conversation.id,
+        UserIdTo: toUser,
+        UserIdFrom: id,
+        text: message,
+        fromUsername: username,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+
+      });
+      await newMessage.save();
+      // let from = await User.findByPk(id, {
+      //       raw: true
+      //   });
+      //   newMessage["from"] = from;
+      console.log("NEWMESSAGE", newMessage)
+      socket.to(conversations[i].id).emit(conversations[i].id, "testtestetest");
+      socket.emit(conversations[i].id, "testtestetest");
+    })
+  }
+});
+
 
 
 

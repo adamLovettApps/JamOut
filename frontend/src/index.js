@@ -11,8 +11,17 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, fetch } from './store/csrf';
 import * as sessionActions from './store/session';
-
+import io from "socket.io-client";
+import { baseUrl} from './config';
 const store = configureStore();
+
+
+
+const socket = io.connect(baseUrl);
+
+socket.on('error', (error) => {
+  console.error(error);
+})
 
 if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
@@ -33,7 +42,7 @@ function Root() {
     <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <App socket={socket}/>
           {/* <Carrot /> */}
         </BrowserRouter>
       </Provider>
