@@ -17,6 +17,7 @@
   font-family: 'Montserrat', sans-serif;
   height: 85px;
   border-radius: 5px;
+  z-index: 4;
 }
 
 .nav-bar-container {
@@ -77,6 +78,7 @@
   margin-bottom: 5px;
   margin-top: -20px;
   height: 20px;
+  z-index: 4;
 }
 
 .profile-link-dropdown-nav {

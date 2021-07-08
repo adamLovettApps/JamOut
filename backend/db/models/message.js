@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     text: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    fromUsername: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {});
   Message.associate = function(models) {

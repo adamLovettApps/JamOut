@@ -5,6 +5,7 @@ const genreRouter = require('./genres.js');
 const instrumentRouter = require('./instruments.js');
 const searchRouter = require('./search');
 const songRouter =require('./songs')
+const conversationsRouter = require('./conversations');
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
@@ -50,5 +51,6 @@ router.use('/genres', genreRouter);
 router.use('/instruments', instrumentRouter);
 router.use('/search', searchRouter);
 router.use('/songs', songRouter);
+router.use('/conversations', conversationsRouter);
 
 module.exports = router;

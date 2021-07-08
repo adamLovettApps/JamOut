@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   Conversation.associate = function(models) {
     Conversation.belongsTo(models.User, {foreignKey: "id", as: "user1"})
     Conversation.belongsTo(models.User, {foreignKey: "id", as: "user2"})
+    Conversation.hasMany(models.Message, {foreignKey: "ConversationId"})
   };
   return Conversation;
 };

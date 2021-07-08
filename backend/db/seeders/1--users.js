@@ -26,7 +26,8 @@ const location = { type: 'Point', coordinates: [0, 0]}
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     let seeds = [];
-    seeds.push({
+    seeds.push(
+      {
         email: 'trentreznor@nin.com',
         username: 'T-Rez',
         hashedpassword: bcrypt.hashSync('password'),
@@ -39,7 +40,21 @@ module.exports = {
         profilephoto: "https://jamout.s3.us-west-1.amazonaws.com/trent.jpeg",
         createdAt: new Date(),
         updatedAt: new Date()
-      })
+      }, {
+        email: 'trentreznor2@nin.com',
+        username: 'T-2',
+        hashedpassword: bcrypt.hashSync('password'),
+        city: "Los Angeles",
+        state: "California",
+        zip: 90017,
+        bio: "The greatest musician of all time.",
+        lat: 34,
+        lng: -118,
+        profilephoto: "https://jamout.s3.us-west-1.amazonaws.com/trent.jpeg",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+      )
     
     return queryInterface.bulkInsert('Users', seeds, {});
   },
