@@ -1,8 +1,43 @@
 .conversations-bar-container {
     width: 200px;
     height: 600px;
+    top: 110px;
     position: absolute;
-    right: 0;
+    right: -169px;
+    transition: right 1s;
+    display: flex;
+    transition-timing-function: ease-in;
+}
+
+.conversations-bar-conversations-container {
+    width: 200px;
+    height: 600px;
     background-color: #F7F2F7;
     border: 2px solid #3F273F;
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.slider-button {
+    background-color: #3F273F;
+    color: #F7F2F7;
+    height: 30px;
+    font-size: 30px;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 7px 0px 0px 7px;
+    border-left: 2px solid #7D4F7D;
+    border-top: 2px solid #7D4F7D;
+    border-bottom: 2px solid #7D4F7D;
+}
+
+.conversation-button {
+    text-align: right;
+    color: #191019;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    padding: 5px;
+    font-size: 16px;
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllMessages, addMessage } from '../../store/messages';
 import { addJoinedConversation } from '../../store/conversations';
+import { setDisplay } from '../../store/messages';
 import "./ChatWindow.css"
 
 const ChatWindow = ({socket}) => {
@@ -10,9 +11,10 @@ const ChatWindow = ({socket}) => {
     const currentConversation = useSelector((state) => state.conversations.currentConversation);
     const messages = useSelector(state => state.messages[currentConversation]);
     const joinedConversations = useSelector(state => state.conversations.joinedConversations);
+    const displayValue = useSelector((state) => state.messages.display);
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
-    const messageElement = useRef(null);
+    const latestMessage = useRef(null);
 
     useEffect(() => {
         if (currentConversation) {
@@ -41,8 +43,8 @@ const ChatWindow = ({socket}) => {
     }, [currentConversation, joinedConversations, dispatch, socket])
 
     useEffect(() => {
-        if (messageElement.current) {
-            messageElement.current.scrollIntoView();
+        if (latestMessage.current) {
+            latestMessage.current.scrollIntoView();
         }
         console.log(socket);
     });
@@ -71,20 +73,29 @@ const ChatWindow = ({socket}) => {
     }
 
     return (
-        <div className="messaging-container">
+        <>
+        
+        <div className="messaging-container" style={{display: displayValue}}>
+            <div>
             {messages.map((message) => {
                 return (
-                    <div>
-                        {message.fromUsername}: {message.text}
+                    <div className="single-message-container" id={message.id} ref={latestMessage}>
+                        <span className="single-message-username">{message.fromUsername}:</span> {message.text}
                     </div>
                     // {message.from.username}:
                 )
             })}
-            <form className="form" onSubmit={submit}>
-                <input onChange={((e) => setMessage(e.target.value))} type="text" value={message}></input>
-                <button type="submit">Send</button>
+            </div>
+        </div>
+        <div style={{display: displayValue}}>
+            <form  className="send-message-form" onSubmit={submit}>
+                <input className="form-field-input-message" onChange={((e) => setMessage(e.target.value))} type="text" value={message}></input>
+                <button className="form-field-button-message" type="submit">Send</button>
             </form>
         </div>
+        <div style={{display: displayValue}} className="close-messaging-button" onClick={(() => dispatch(setDisplay("none")))}><i class="fas fa-times-circle close-message"></i></div>
+
+        </>
     )
 }
 
