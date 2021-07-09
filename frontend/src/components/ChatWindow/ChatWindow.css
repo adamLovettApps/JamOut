@@ -1,6 +1,6 @@
 .messaging-container {
-    position: absolute;
-    bottom: -233px;
+    position: fixed;
+    bottom: 30px;
     right: 30px;
     height: 200px;
     width: 300px;
@@ -24,8 +24,8 @@
     width: 300px;
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    bottom: -266px;
+    position: fixed;
+    bottom: 0px;
     right: 30px;
     border-bottom: 2px solid #3F273F;
     border-left: 2px solid #3F273F;
@@ -68,12 +68,12 @@
 .close-messaging-button {
     font-size: 30px;
     color: #191019;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0,0,0,0);
     bottom: 0;
     right: 35px;
     height: 10px;
-    bottom: -15px;
+    bottom: 248px;
     
 
 }

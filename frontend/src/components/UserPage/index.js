@@ -7,11 +7,14 @@ import { setCurrentSong } from '../../store/songs';
 import AddSongForm from './AddSongForm';
 import EditUserFormModal from './EditUserFormModal';
 import SearchBar from '../SearchBar';
+import { setCurrentConversation } from '../../store/conversations';
+import { setDisplay } from '../../store/messages';
 import 'react-h5-audio-player/lib/styles.css';
 import "./UserPage.css";
 
 
-const UserPage = () => {
+const UserPage = ({socket}) => {
+
     const dispatch = useDispatch();
     const [loaded, setLoaded] = useState(false);
     const { id } = useParams();
@@ -61,6 +64,17 @@ const UserPage = () => {
         setLoaded(true);
     }, [id, dispatch])
 
+    const setActiveConvo = async () => {
+        const res = await fetch(`/api/conversations/${user.id}/${loggedUser.id}`);
+        const data = await res.json();
+        const { id, newConvo} = data;
+        if (newConvo) {
+            socket.emit('new', id);
+        }
+        dispatch(setCurrentConversation(id));
+        dispatch(setDisplay("inline"));
+    }
+
     if (!loaded) {
         return null;
     }
@@ -87,8 +101,15 @@ const UserPage = () => {
                 <div className="user-page-outer-container">
                     <div className="search-bar-container-non-splash"><SearchBar></SearchBar></div>
                     <div className="user-page-profile-container">
-                        <div className="user-page-profile-container-photo-container">
-                            <img className="user-page-profile-container-photo" alt="User Profile Img" src={`${url}`}></img>
+                        <div className="user-page-left-side-container">
+                            <div className="user-page-profile-container-photo-container">
+                                <img className="user-page-profile-container-photo" alt="User Profile Img" src={`${url}`}></img>
+                            </div>
+                            <div className="user-page-user-actions">
+                                {loggedUser && loggedUser.id !== user.id && 
+                                    <button onClick={setActiveConvo}>Message User</button>
+                                }
+                            </div>
                         </div>
                         <div className="user-page-profile-container-information">
                             <div className="user-page-profile-container-information-username">
@@ -196,8 +217,15 @@ const UserPage = () => {
                 <div className="user-page-outer-container">
                     <div className="search-bar-container-non-splash"><SearchBar></SearchBar></div>
                     <div className="user-page-profile-container">
-                        <div className="user-page-profile-container-photo-container">
-                            <img className="user-page-profile-container-photo" alt="User Profile Img" src={`${url}`}></img>
+                        <div className="user-page-left-side-container">
+                            <div className="user-page-profile-container-photo-container">
+                                <img className="user-page-profile-container-photo" alt="User Profile Img" src={`${url}`}></img>
+                            </div>
+                            <div className="user-page-user-actions">
+                                {loggedUser && loggedUser.id !== user.id && 
+                                    <button onClick={setActiveConvo}>Message User</button>
+                                }
+                            </div>
                         </div>
                         <div className="user-page-profile-container-information">
                             <div className="user-page-profile-container-information-username">
