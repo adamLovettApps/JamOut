@@ -3,7 +3,6 @@ const asyncHandler = require("express-async-handler");
 const { Op } = require('sequelize');
 const { Conversation, User, Message } = require("../../db/models");
 const conversation = require("../../db/models/conversation");
-
 const router = express.Router();
 
 router.get('/:id', asyncHandler(async (req, res) => {
@@ -63,6 +62,53 @@ router.get('/messages/:id', asyncHandler(async (req, res) => {
 
 
     return res.json(conversation);
+}));
+
+router.get('/:UserId/:UserId2', asyncHandler(async (req, res) => {
+    const UserId = parseInt(req.params.UserId);
+    const UserId2 = parseInt(req.params.UserId2);
+    console.log("HERE!");
+    let newConvo = false;
+    let conversation = await Conversation.findOne({
+        where: {
+            [Op.or]: [
+                {
+                    [Op.and] : [
+                        {
+                            UserId: UserId
+                        },
+                        {
+                            UserId2: UserId2
+                        }
+                    ]
+                },
+                {
+                    [Op.and] : [
+                        {
+                            UserId: UserId2
+                        },
+                        {
+                            UserId2: UserId
+                        }
+                    ]
+                }
+            
+                
+            ]
+        }
+    })
+    console.log(conversation);
+    if (conversation === null) {
+        conversation = await Conversation.create({
+            UserId: UserId,
+            UserId2: UserId2,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        });
+        newConvo = true;
+    }
+
+    return res.json({id: conversation.id, newConvo});
 }));
 
 module.exports = router;

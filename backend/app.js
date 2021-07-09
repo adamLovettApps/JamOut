@@ -85,13 +85,55 @@ io.on('connection', async(socket) => {
       });
   });
 
+  socket.on('new', async(conversationId) => {
+    console.log("GOT HERE", conversationId);
+    socket.on(conversationId, async({message, id, username}) => {
+      let conversation = await Conversation.findByPk(conversationId);
+      conversation = conversation.dataValues;
+      const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
+      const newMessage = await Message.create({
+        ConversationId : conversation.id,
+        UserIdTo: toUser,
+        UserIdFrom: id,
+        text: message,
+        fromUsername: username,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+
+      });
+      await newMessage.save();
+      socket.to(conversationId).emit(conversationId, newMessage);
+      socket.emit(conversationId, newMessage);
+    })
+  });
+
+  socket.on('reset', async(conversationId) => {
+    console.log("GOT HERE", conversationId);
+    socket.leave(conversationId, async () => {});
+    socket.on(conversationId, async({message, id, username}) => {
+      let conversation = await Conversation.findByPk(conversationId);
+      conversation = conversation.dataValues;
+      const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
+      const newMessage = await Message.create({
+        ConversationId : conversation.id,
+        UserIdTo: toUser,
+        UserIdFrom: id,
+        text: message,
+        fromUsername: username,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+
+      });
+      await newMessage.save();
+      socket.to(conversationId).emit(conversationId, newMessage);
+      socket.emit(conversationId, newMessage);
+    })
+  });
+
   const conversations = await Conversation.findAll();
   for (let i = 0; i < conversations.length; i++) {
 
     socket.on(conversations[i].id, async({message, id, username}) => {
-
-      
-
       let conversation = await Conversation.findByPk(conversations[i].id);
       conversation = conversation.dataValues;
       const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
@@ -106,13 +148,8 @@ io.on('connection', async(socket) => {
 
       });
       await newMessage.save();
-      // let from = await User.findByPk(id, {
-      //       raw: true
-      //   });
-      //   newMessage["from"] = from;
-      console.log("NEWMESSAGE", newMessage)
-      socket.to(conversations[i].id).emit(conversations[i].id, "testtestetest");
-      socket.emit(conversations[i].id, "testtestetest");
+      socket.to(conversations[i].id).emit(conversations[i].id, newMessage);
+      socket.emit(conversations[i].id, newMessage);
     })
   }
 });
@@ -120,4 +157,4 @@ io.on('connection', async(socket) => {
 
 
 
-module.exports = {app, http };
+module.exports = {app, http, io };

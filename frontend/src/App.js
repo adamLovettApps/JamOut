@@ -32,7 +32,7 @@ function App({socket}) {
             <SearchResults></SearchResults>
           </Route>
           <Route path="/users/:id">
-            <UserPage />
+            <UserPage socket={socket}/>
           </Route>
           <Route path="/deleteProfile">
             <DeleteProfile></DeleteProfile>

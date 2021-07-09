@@ -18,14 +18,24 @@ const ConversationsBar = (socket) => {
         dispatch(getUserConversations(user.id));
     }, [dispatch, user.id]);
 
-    const setActiveConversation = (id) => {
+    useEffect(() => {
+        const previousConvos = conversations ? conversations : [];
 
+        const interval = setInterval(() => {
+            dispatch(getUserConversations(user.id));
+        }, 1000);
+
+        return () => clearInterval(interval);
+        
+    }, [dispatch, user.id])
+
+    const setActiveConversation = (id) => {
+        socket.socket.emit('reset', id);
         dispatch(setCurrentConversation(id));
         dispatch(setDisplay("inline"));
     }
 
     const handleSlider = () => {
-        console.log("CLICK")
         const conversationContainer = document.getElementById("conversations-bar-container");
         const sliderIcon = document.getElementById("slider-icon");
         console.log(conversationContainer)
@@ -44,6 +54,7 @@ const ConversationsBar = (socket) => {
     }
 
     return (
+        <>
         <div id="conversations-bar-container" className="conversations-bar-container">
             <div className="slider-button" onClick={handleSlider}><i id="slider-icon" class="fas fa-chevron-left"></i></div>
             <div className="conversations-bar-conversations-container">
@@ -61,8 +72,11 @@ const ConversationsBar = (socket) => {
                 }))}
                 
             </div>
-            <ChatWindow socket={socket}></ChatWindow>
+        
+            
         </div>
+        <ChatWindow socket={socket}></ChatWindow>
+        </>
     )
 }
 

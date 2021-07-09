@@ -33,6 +33,10 @@
     bottom: 10px;
 }
 
+.user-page-left-side-container {
+    display:flex;
+    flex-direction: column;
+}
 
 
 .user-page-profile-container-photo-container {
@@ -41,10 +45,15 @@
     /* background-color: #0D080D; */
     border-radius: 12px;
     border: 1px solid #3F273F;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     margin-right: 70px;    
     box-shadow: rgba(63,39,63, 0.5) 1px 1px 2px 0px, rgba(63,39, 63, 0.25) 0px 2px 6px 2px;
 
+
+}
+
+.user-page-user-actions {
+    margin-bottom: 40px;
 }
 
 .user-page-profile-container-photo-container img{
