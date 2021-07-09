@@ -1,10 +1,16 @@
 const ADD_MESSAGE = "messages/add_message";
 const SET_MESSAGES = "messages/set_message";
+const SET_DISPLAY = "messages/set_display";
 
 export const addMessage = (message) => ({
     type: ADD_MESSAGE,
     payload: message
 });
+
+export const setDisplay = value => ({
+    type: SET_DISPLAY,
+    payload: value
+})
 
 const setMessages = (messages, conversation) => ({
     type: SET_MESSAGES,
@@ -23,7 +29,7 @@ export const getAllMessages = (id) => async(dispatch) => {
     }
 };
 
-const initialState = {};
+const initialState = {display: "none"};
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
@@ -36,11 +42,15 @@ const reducer = (state = initialState, action) => {
             }
         case SET_MESSAGES:
             const { messages, conversation } = action.payload;
-            console.log(messages, "messages");
             return {
                 ...state,
                 [conversation.id]: messages
             };
+        case SET_DISPLAY:
+            return {
+                ...state,
+                display: action.payload
+            }
         default:
             return state;
     }

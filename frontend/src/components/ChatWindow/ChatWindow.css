@@ -1,8 +1,85 @@
 .messaging-container {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: -233px;
+    right: 30px;
     height: 200px;
-    width: 200px;
-    background-color: cornflowerblue;
+    width: 300px;
+    background-color:#F7F2F7;
+    color: #191019;
+    overflow: auto;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    border-top: 2px solid #3F273F;
+    border-left: 2px solid #3F273F;
+    border-right: 2px solid #3F273F;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.single-message-container {
+    margin-bottom: 3px;
+    margin-right: 20px;
+}
+
+.send-message-form {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -266px;
+    right: 30px;
+    border-bottom: 2px solid #3F273F;
+    border-left: 2px solid #3F273F;
+    border-right: 2px solid #3F273F;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:#F7F2F7;
+    padding-bottom: 5px;
+}
+
+.single-message-username {
+    font-weight: 600;
+}
+
+.form-field-input-message {
+    width: 220px;
+    line-height:30px;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    /* background-color: #583758; */
+    background-color: #F7F2F7;
+    color: #0D080D;
+    /* border: 1px solid #7D4F7D; */
+    border: 1px solid #3F273F;
+    border-radius: 2px;
+}
+
+.form-field-button-message {
+    background-color: #3F273F;
+    color: #F7F2F7;
+    border: 2px solid #7D4F7D;
+    font-weight: 500;
+}
+
+.close-messaging-button {
+    font-size: 30px;
+    color: #191019;
+    position: absolute;
+    background-color: rgba(0,0,0,0);
+    bottom: 0;
+    right: 35px;
+    height: 10px;
+    bottom: -15px;
+    
+
+}
+
+.close-message {
+    color: #191019;
+    font-size: 20px;
+
 }
