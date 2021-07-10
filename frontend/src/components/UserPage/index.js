@@ -107,7 +107,7 @@ const UserPage = ({socket}) => {
                             </div>
                             <div className="user-page-user-actions">
                                 {loggedUser && loggedUser.id !== user.id && 
-                                    <button onClick={setActiveConvo}>Message User</button>
+                                    <button className="form-field-button-message-user" onClick={setActiveConvo}>Message User</button>
                                 }
                             </div>
                         </div>
@@ -223,7 +223,7 @@ const UserPage = ({socket}) => {
                             </div>
                             <div className="user-page-user-actions">
                                 {loggedUser && loggedUser.id !== user.id && 
-                                    <button onClick={setActiveConvo}>Message User</button>
+                                    <button className="form-field-button-message-user" onClick={setActiveConvo}>Message User</button>
                                 }
                             </div>
                         </div>

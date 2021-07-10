@@ -17,6 +17,22 @@
     max-width: 1000px;
 }
 
+
+.form-field-button-message-user {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    border-radius: 2px;
+    background-color: rgba(63, 39, 63, 0.9);
+    font-size: 14px;
+    width: 300px;
+    height: 30px;
+    border: 1px solid #7D4F7D;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-weight: 600;
+
+}
+
 .edit-profile-popup-button {
     /* margin-left: 57.4%; */
     font-family: 'Montserrat', sans-serif;
