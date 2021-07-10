@@ -30,7 +30,6 @@ const ConversationsBar = (socket) => {
     }, [dispatch, user.id])
 
     const setActiveConversation = (id) => {
-        socket.socket.emit('reset', id);
         dispatch(setCurrentConversation(id));
         dispatch(setDisplay("inline"));
     }
