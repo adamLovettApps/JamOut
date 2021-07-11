@@ -89,42 +89,122 @@ io.on('connection', async(socket) => {
     console.log("GOT HERE", conversationId);
     socket.on(conversationId, async({message, id, username}) => {
       let conversation = await Conversation.findByPk(conversationId);
-      conversation = conversation.dataValues;
-      const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
+      const toUser = conversation.dataValues.UserId === id ? conversation.dataValues.UserId2 : conversation.dataValues.UserId;
+      let new1 = conversation.dataValues.UserId1 === toUser;
+      let new2 = conversation.dataValues.UserId2 === toUser;
+      conversation.newCoversationUser1  = new1;
+      conversation.newCoversationUser2  = new2;
       const newMessage = await Message.create({
-        ConversationId : conversation.id,
+        ConversationId : conversation.dataValues.id,
         UserIdTo: toUser,
         UserIdFrom: id,
         text: message,
         fromUsername: username,
+        unreadUser1: new1,
+        unreadUser2: new2,
         createdAt: new Date(),
         updatedAt: new Date(),
 
       });
+      if (conversation.dataValues.UserId === newMessage.UserIdTo) {
+        const updated = await Conversation.update({
+            unreadUser1: true,
+            unreadUser2: false
+          },
+          {
+            where: {
+              id: conversationId
+            }
+        })
+        
+      } else {
+        const updated = await Conversation.update({
+            unreadUser1: false,
+            unreadUser2: true
+          },
+          {
+            where: {
+              id: conversationId
+            }
+        })
+      }
       await newMessage.save();
+      await conversation.save();
       socket.to(conversationId).emit(conversationId, newMessage);
       socket.emit(conversationId, newMessage);
     })
   });
 
-  socket.on('reset', async(conversationId) => {
-    console.log("GOT HERE", conversationId);
-    socket.leave(conversationId, async () => {});
+  socket.on('acceptincoming', async(conversationId) => {
+    console.log("HELLLLLOOOOOLALALALA!");
+    const updated = await Conversation.update({
+        newConversationUser1: false,
+        newConversationUser2: false
+      },
+      {
+        where: {
+          id: conversationId
+        }
+      })
+      console.log(updated);
+    console.log("@@@@@@@@@@@@@@IS THIS BEING REACHED?!?!?", conversationId)
     socket.on(conversationId, async({message, id, username}) => {
+      console.log("IS THIS BEING REACHED?!?!?", conversationId)
+      console.log("EMIT<ENITIEEINIEREIRNIENRIENIEEINEIRNEIREIRNEINR")
       let conversation = await Conversation.findByPk(conversationId);
-      conversation = conversation.dataValues;
-      const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
+      const toUser = conversation.dataValues.UserId === id ? conversation.dataValues.UserId2 : conversation.dataValues.UserId;
+      let new1 = conversation.dataValues.UserId1 === toUser;
+      let new2 = conversation.dataValues.UserId2 === toUser;
+      conversation.update({
+        newConversationUser1: false,
+        newConversationUser2: false
+      })
+      await conversation.save();
+      // conversation.newCoversationUser2  = false;
       const newMessage = await Message.create({
-        ConversationId : conversation.id,
+        ConversationId : conversation.dataValues.id,
         UserIdTo: toUser,
         UserIdFrom: id,
         text: message,
         fromUsername: username,
+        unreadUser1: new1,
+        unreadUser2: new2,
         createdAt: new Date(),
         updatedAt: new Date(),
-
       });
+      if (conversation.dataValues.UserId === newMessage.UserIdTo) {
+        const updated = await Conversation.update({
+            unreadUser1: true,
+            unreadUser2: false
+          },
+          {
+            where: {
+              id: conversationId
+            }
+        })
+        
+      } else {
+        const updated = await Conversation.update({
+            unreadUser1: false,
+            unreadUser2: true
+          },
+          {
+            where: {
+              id: conversationId
+            }
+        })
+      }
       await newMessage.save();
+      await conversation.save();
+      await Conversation.update({
+        newConversationUser1: false,
+        newConversationUser2: false
+      },
+      {
+        where: {
+          id: conversationId
+        }
+      })
       socket.to(conversationId).emit(conversationId, newMessage);
       socket.emit(conversationId, newMessage);
     })
@@ -132,22 +212,70 @@ io.on('connection', async(socket) => {
 
   const conversations = await Conversation.findAll();
   for (let i = 0; i < conversations.length; i++) {
+    const updated = await Conversation.update({
+        newConversationUser1: false,
+        newConversationUser2: false
+      },
+      {
+        where: {
+          id: conversations[i].id
+        }
+      })
 
+      conversations[i].newConversationUser1  = false;
+      conversations[i].newConversationUser2  = false;
+      await conversations[i].save();
     socket.on(conversations[i].id, async({message, id, username}) => {
+      // const updated = await Conversation.update({
+      //   newConversationUser1: false,
+      //   newConversationUser2: false
+      // },
+      // {
+      //   where: {
+      //     id: conversations[i].id
+      //   }
+      // })
       let conversation = await Conversation.findByPk(conversations[i].id);
-      conversation = conversation.dataValues;
-      const toUser = conversation.UserId === id ? conversation.UserId2 : conversation.UserId;
+      const toUser = conversation.dataValues.UserId === id ? conversation.dataValues.UserId2 : conversation.dataValues.UserId;
+      let new1 = conversation.dataValues.UserId1 === toUser;
+      let new2 = conversation.dataValues.UserId2 === toUser;
       const newMessage = await Message.create({
-        ConversationId : conversation.id,
+        ConversationId : conversation.dataValues.id,
         UserIdTo: toUser,
         UserIdFrom: id,
         text: message,
         fromUsername: username,
+        unreadUser1: new1,
+        unreadUser2: new2,
         createdAt: new Date(),
         updatedAt: new Date(),
-
       });
+      // console.log(conversation.dataValues.UserId, newMessage.UserIdTo, "INFORMATION");
+      if (conversation.dataValues.UserId === newMessage.UserIdTo) {
+        const updated = await Conversation.update({
+            unreadUser1: true,
+            unreadUser2: false
+          },
+          {
+            where: {
+              id: conversations[i].id
+            }
+        })
+        
+      } else {
+        const updated = await Conversation.update({
+            unreadUser1: false,
+            unreadUser2: true
+          },
+          {
+            where: {
+              id: conversations[i].id
+            }
+        })
+      }
+      
       await newMessage.save();
+      await conversation.save();
       socket.to(conversations[i].id).emit(conversations[i].id, newMessage);
       socket.emit(conversations[i].id, newMessage);
     })

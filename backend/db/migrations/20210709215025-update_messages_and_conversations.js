@@ -34,6 +34,21 @@ module.exports = {
           type: Sequelize.BOOLEAN,
           allowNull: false,
         },
+      ),queryInterface.addColumn(
+        'Conversations', // table name
+        'newConversationUser1', // new field name
+        {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+        },
+      ),
+      queryInterface.addColumn(
+        'Conversations', // table name
+        'newConversationUser2', // new field name
+        {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+        },
       ),
       
       
@@ -46,6 +61,8 @@ module.exports = {
       queryInterface.removeColumn('Messages', 'unreadUser2'),
       queryInterface.removeColumn('Conversations', 'unreadUser1'),
       queryInterface.removeColumn('Conversations', 'unreadUser2'),
+      queryInterface.removeColumn('Conversations', 'newConversationUser1'),
+      queryInterface.removeColumn('Conversations', 'newConversationUser2'),
     ]);
   }
 };

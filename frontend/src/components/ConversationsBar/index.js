@@ -19,18 +19,32 @@ const ConversationsBar = (socket) => {
     }, [dispatch, user.id]);
 
     useEffect(() => {
-        const previousConvos = conversations ? conversations : [];
 
         const interval = setInterval(() => {
             dispatch(getUserConversations(user.id));
-        }, 1000);
+        }, 10000);
 
         return () => clearInterval(interval);
         
     }, [dispatch, user.id])
 
     const setActiveConversation = (id) => {
-        dispatch(setCurrentConversation(id));
+        let conversation;
+        for (let i = 0; i < conversations.length; i++) {
+            if (conversations[i].id === id) {
+                conversation = conversations[i];
+            }
+        }
+        dispatch(getUserConversations(user.id));
+        if ((conversation.UserId === user.id && conversation.newConversationUser1 === true)) {
+            socket.socket.emit('acceptincoming', id);
+        
+        }
+
+        if ((conversation.UserId2 === user.id && conversation.newConversationUser2 === true)) {
+            socket.socket.emit('acceptincoming', id);
+        }
+        dispatch(setCurrentConversation(id, user.id));
         dispatch(setDisplay("inline"));
     }
 
@@ -58,17 +72,40 @@ const ConversationsBar = (socket) => {
             <div className="slider-button" onClick={handleSlider}><i id="slider-icon" class="fas fa-chevron-left"></i></div>
             <div className="conversations-bar-conversations-container">
                 {conversations.map((conversation => {
+                    let bold;
                     const displayName = user.id === conversation.user1.id ? conversation.user2.username : conversation.user1.username;
+                    if (user.id === conversation.user1.id && conversation.unreadUser1 === true) {
+                        bold = true;
+                    }
+                    if (user.id === conversation.user2.id && conversation.unreadUser2 === true) {
+                        bold = true;
+                    }
+                    if(bold) {
                     return (
                         <button 
                             key={conversation.id}
                             onClick={(() => setActiveConversation(conversation.id))}
-                            className="conversation-button"
+                            className="conversation-button-bold"
+                            
                         >
                             {displayName}
                         </button>
                     )
-                }))}
+                    } else {
+                        return (
+                        <button 
+                            key={conversation.id}
+                            onClick={(() => setActiveConversation(conversation.id))}
+                            className="conversation-button"
+                            
+                        >
+                            {displayName}
+                        </button>
+                        )
+                    
+                    }
+                }))
+            }
                 
             </div>
         

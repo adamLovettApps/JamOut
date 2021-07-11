@@ -102,6 +102,10 @@ router.get('/:UserId/:UserId2', asyncHandler(async (req, res) => {
         conversation = await Conversation.create({
             UserId: UserId,
             UserId2: UserId2,
+            unreadUser1: false,
+            unreadUser2: false,
+            newConversationUser1: false,
+            newConversationUser2: true,
             createdAt: new Date(),
             updatedAt: new Date()
         });

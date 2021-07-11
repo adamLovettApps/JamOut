@@ -65,7 +65,7 @@ const UserPage = ({socket}) => {
     }, [id, dispatch])
 
     const setActiveConvo = async () => {
-        const res = await fetch(`/api/conversations/${user.id}/${loggedUser.id}`);
+        const res = await fetch(`/api/conversations/${loggedUser.id}/${user.id}`);
         const data = await res.json();
         const { id, newConvo} = data;
         if (newConvo) {

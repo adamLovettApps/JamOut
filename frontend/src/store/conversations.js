@@ -12,10 +12,15 @@ export const addJoinedConversation = conversation => ({
     payload: conversation
 });
 
-export const setCurrentConversation = conversation => ({
+const setCurrent = conversation => ({
     type: SET_CURRENT_CONVERSATION,
     payload: conversation
 });
+
+export const setCurrentConversation = (conversation, id) => async(dispatch) => {
+
+    dispatch(setCurrent(conversation));
+};
 
 export const getUserConversations = (id) => async(dispatch) => {
     const data = await fetch(`/api/conversations/${id}`);

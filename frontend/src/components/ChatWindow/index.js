@@ -36,7 +36,7 @@ const ChatWindow = ({socket}) => {
                 `Recieved new message for : ${incoming}`
             );
             console.log("MESSSSSSAGEEEEEE!", incoming);
-            dispatch(getAllMessages(currentConversation));
+            dispatch(addMessage(incoming));
         });
 
         dispatch(addJoinedConversation(currentConversation));
@@ -54,7 +54,7 @@ const ChatWindow = ({socket}) => {
     }, [dispatch, currentConversation]);
 
     const sendMessage = message => {
-        console.log(user.id);
+        console.log(user.id, currentConversation);
         socket.emit(currentConversation, {
             message: message,
             id: user.id,

@@ -177,6 +177,18 @@ router.delete('/:id', asyncHandler(async(req, res) => {
       }
     });
 
+    await Message.destroy({
+      where: {
+        UserIdTo: id
+      }
+    });
+
+    await Message.destroy({
+      where: {
+        UserIdFrom: id
+      }
+    });
+
     await Conversation.destroy({
       where: {
         UserId: id
@@ -189,17 +201,6 @@ router.delete('/:id', asyncHandler(async(req, res) => {
       }
     });
 
-    await Message.destroy({
-      where: {
-        UserIdTo: id
-      }
-    });
-
-    await Message.destroy({
-      where: {
-        UserIdFrom: id
-      }
-    });
 
     await User.destroy({
       where: {
