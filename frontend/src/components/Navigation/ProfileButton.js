@@ -47,6 +47,9 @@ function ProfileButton({ user }) {
           <div className="profile-link-dropdown">
             <Link className="profile-link-dropdown-nav" to={`/users/${user.id}`}>Your Profile</Link>
           </div>
+          <div className="favorites-dropdown">
+            <Link  className="favorites-dropdown-nav" to={`/favorites/`}>Your Favorites</Link>
+          </div>
           <div className="log-out-dropdown" onClick={logout}>
             <Link className="log-out-dropdown-nav" to="/">Log Out</Link>
           </div>

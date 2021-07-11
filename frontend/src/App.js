@@ -9,6 +9,7 @@ import DeleteProfile from "./components/DeleteProfile";
 import ConversationsBar from "./components/ConversationsBar";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Favorites from "./components/Favorites";
 
 function App({socket}) {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App({socket}) {
           </Route>
           <Route path="/deleteProfile">
             <DeleteProfile></DeleteProfile>
+          </Route>
+          <Route path="/favorites">
+            <Favorites></Favorites>
           </Route>
         </Switch>
         

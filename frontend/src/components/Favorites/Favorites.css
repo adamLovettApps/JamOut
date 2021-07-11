@@ -1,0 +1,57 @@
+.search-result-header {
+    font-size:40px;
+    margin-top: 40px;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    font-weight: 600;
+}
+
+.search-result-container {
+    margin-top: -30px;
+    display: flex;
+    justify-content: left;
+}
+
+.search-result-cards-container {
+    margin-top: 60px;
+    margin-left: 30%;
+}
+
+.search-results-cards-divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    height: 1px;
+    background-color: #583758;
+}
+
+.search-result-header-divider {
+    border: none;
+    height: 1px;
+    background-color: #583758;
+    margin-left: 27%;
+    margin-right: 27%;
+}
+
+.search-bar-container-non-splash {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    background-color: rgba(63, 39, 63, .6);
+    border: 1px solid #331F33;
+    border-radius: 40px;
+    margin-top: 30px;
+}
+
+.favorites-no-result {
+    margin-top: 60px;
+    margin-left: 37.2%;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 324px;
+}
+
+.search-results-found-container {
+    margin-bottom: 342px;
+}
