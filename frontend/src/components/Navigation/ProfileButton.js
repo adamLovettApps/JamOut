@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import LoginFormModal from '../LoginFormModal';
 import DeleteProfileModal from "../DeleteProfile";
+import { setCurrentConversation } from "../../store/conversations";
+import { setDisplay } from "../../store/messages";
 
 import * as sessionActions from '../../store/session';
 
@@ -30,6 +32,9 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(setCurrentConversation(null));
+    dispatch(setDisplay("none"));
+
   };
 
   return (
