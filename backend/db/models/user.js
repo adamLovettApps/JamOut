@@ -85,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Conversation, {foreignKey: "UserId" })
     User.hasMany(models.Conversation, {foreignKey: "UserId2" })
     User.hasMany(models.Like, {foreignKey: "UserId"})
-    User.hasMany(models.Like, {foreignKey: "UserId2"})
+    User.hasMany(models.Like, {foreignKey: "UserId2", as: "likee"})
     User.hasMany(models.Message, {foreignKey: "UserIdTo"})
     User.hasMany(models.Message, {foreignKey: "UserIdFrom"})
   };

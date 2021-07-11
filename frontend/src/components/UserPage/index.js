@@ -9,6 +9,7 @@ import EditUserFormModal from './EditUserFormModal';
 import SearchBar from '../SearchBar';
 import { setCurrentConversation } from '../../store/conversations';
 import { setDisplay } from '../../store/messages';
+import { setFavorite, getAllFavorites } from '../../store/favorites';
 import 'react-h5-audio-player/lib/styles.css';
 import "./UserPage.css";
 
@@ -21,7 +22,8 @@ const UserPage = ({socket}) => {
     const user = useSelector((state) => state.users.currentUser);
     const loggedUser = useSelector((state) => state.session.user);
     const song = useSelector((state) => state.songs.currentSong);
-    
+    const favorites = useSelector(state => state.favorites.favorites)
+    let favorited = false;
     const updateSong = (song) => {
         dispatch(setCurrentSong(song));
     }
@@ -59,8 +61,24 @@ const UserPage = ({socket}) => {
         }
     }
 
+    const addFavorite = () => {
+        (async() => {
+            dispatch(setFavorite(loggedUser.id, user.id, 1));
+            dispatch(getAllFavorites(loggedUser.id));
+        })();
+    }
+    const removeFavorite = () => {
+        (async() => {
+            dispatch(setFavorite(loggedUser.id, user.id, 0));
+            dispatch(getAllFavorites(loggedUser.id));
+        })();
+    }
+
     useEffect(() => {
         dispatch(getUser(id));
+        if (loggedUser){
+            dispatch(getAllFavorites(loggedUser.id))
+        }
         setLoaded(true);
     }, [id, dispatch])
 
@@ -80,6 +98,21 @@ const UserPage = ({socket}) => {
     }
 
     if (user) {
+
+
+        if (loggedUser && loggedUser.id !== user.id && favorites.length !== 0) {
+            console.log("CONDITION MET");
+            favorites.forEach((favorite) => {
+                console.log("HIT")
+                if (favorite.UserId === loggedUser.id && favorite.UserId2 === user.id) {
+                    favorited = true;
+                    console.log("TRUE!!!")
+                }
+                console.log("HERE")
+                console.log(favorited)
+            })
+        }
+                                
         if (user.Songs.length) {
             const baseURL = user.profilephoto.split('/')[3];
             const imageRequest = JSON.stringify({
@@ -109,6 +142,23 @@ const UserPage = ({socket}) => {
                                 {loggedUser && loggedUser.id !== user.id && 
                                     <button className="form-field-button-message-user" onClick={setActiveConvo}>Message User</button>
                                 }
+
+                                
+                                { loggedUser && loggedUser.id !== user.id && favorites && favorited &&
+                                    (
+                                        
+                                        <button onClick={removeFavorite} className="form-field-button-message-user">Remove Favorite</button>
+                                        
+                                    )
+                                }
+                                
+                                {loggedUser && loggedUser.id !== user.id && favorites &&
+                                    !favorited && ( <button onClick={addFavorite} className="form-field-button-message-user">Add Favorite</button>)
+                                }
+                                
+                                
+                                
+                                
                             </div>
                         </div>
                         <div className="user-page-profile-container-information">
@@ -224,6 +274,18 @@ const UserPage = ({socket}) => {
                             <div className="user-page-user-actions">
                                 {loggedUser && loggedUser.id !== user.id && 
                                     <button className="form-field-button-message-user" onClick={setActiveConvo}>Message User</button>
+                                }
+                                
+                                { loggedUser && loggedUser.id !== user.id && favorites && favorited &&
+                                    (
+                                        
+                                        <button onClick={removeFavorite} className="form-field-button-message-user">Remove Favorite</button>
+                                        
+                                    )
+                                }
+                                
+                                {loggedUser && loggedUser.id !== user.id && favorites &&
+                                    !favorited && ( <button onClick={addFavorite} className="form-field-button-message-user">Add Favorite</button>)
                                 }
                             </div>
                         </div>

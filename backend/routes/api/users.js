@@ -211,4 +211,90 @@ router.delete('/:id', asyncHandler(async(req, res) => {
     res.send();
 }));
 
+router.get('/getFavorites/:userId', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.userId);
+  const likes = await Like.findAll(
+    {
+      where: {
+        UserId: id
+      },
+
+    }
+  )
+
+  for (let i = 0; i < likes.length; i++) {
+    const userInformation = await User.findByPk(likes[i].UserId2,
+        {
+          include: [
+            {
+              model: Instrument
+            },
+            {
+              model: Genre
+            }
+          ]
+        }
+      );
+    console.log(likes[i])
+    likes[i].dataValues = {
+      ...likes[i].dataValues,
+      userInformation: userInformation
+    }
+  }
+
+  res.send(likes);
+}));
+
+router.post('/setFavorite/:userId/:userId2/:statusCode', asyncHandler(async (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const userId2 = parseInt(req.params.userId2);
+  const statusCode = parseInt(req.params.statusCode);
+
+  if (statusCode === 1) {
+    let like = Like.create({
+      UserId: userId,
+      UserId2: userId2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    })
+
+  } else {
+    await Like.destroy({
+    where: {
+      UserId: userId,
+      UserId2: userId2
+    }
+  });
+  }
+  
+  const likes = await Like.findAll(
+    {
+      where: {
+        UserId: userId
+      }
+    }
+  )
+
+  for (let i = 0; i < likes.length; i++) {
+    const userInformation = await User.findByPk(likes[i].UserId2,
+        {
+          include: [
+            {
+              model: Instrument
+            },
+            {
+              model: Genre
+            }
+          ]
+        });
+    console.log(likes[i])
+    likes[i].dataValues = {
+      ...likes[i].dataValues,
+      userInformation: userInformation
+    }
+  }
+
+  res.send(likes);
+}));
+
 module.exports = router;

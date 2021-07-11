@@ -24,11 +24,11 @@
     border-radius: 2px;
     background-color: rgba(63, 39, 63, 0.9);
     font-size: 14px;
-    width: 300px;
+    width: 140px;
     height: 30px;
     border: 1px solid #7D4F7D;
     border-radius: 10px;
-    margin-top: 15px;
+    margin-top: 0px;
     font-weight: 600;
 
 }
@@ -70,6 +70,9 @@
 
 .user-page-user-actions {
     margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
 }
 
 .user-page-profile-container-photo-container img{

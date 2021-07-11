@@ -8,7 +8,7 @@ import songs from './songs';
 import search from './search';
 import conversations from './conversations';
 import messages from './messages';
-
+import favorites from './favorites'
 const rootReducer = combineReducers({
   session,
   genres,
@@ -17,7 +17,8 @@ const rootReducer = combineReducers({
   songs,
   search,
   conversations,
-  messages
+  messages,
+  favorites
 });
 
 let enhancer;

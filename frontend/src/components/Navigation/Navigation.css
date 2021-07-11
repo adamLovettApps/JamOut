@@ -8,14 +8,14 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(99,100,126, 0.9);
-  width: 112px;
+  width: 115px;
   border: 1px solid #AAABBC;
   align-items: flex-end;
   padding-left: 10px;
   padding-right: 10px;
   color: #F7F2F7;
   font-family: 'Montserrat', sans-serif;
-  height: 85px;
+  height: 110px;
   border-radius: 5px;
   z-index: 4;
 }
@@ -97,6 +97,7 @@
   color: #F7F2F7;
   font-weight: 500;
   height: 20px;
+  margin-top: 3px;
 }
 
 .log-out-dropdown-nav {
@@ -126,6 +127,23 @@
   color: #F7F2F7;
   font-weight: 500;
   height: 20px;
+}
+
+.favorites-dropdown {
+  color: black;
+  margin-top: 0px;
+  height: 20px;
+}
+
+.favorites-dropdown-nav {
+  text-decoration: none;
+  color: #F7F2F7;
+  font-weight: 500;
+  height: 20px;
+}
+
+.favorites-dropdown-nav:hover {
+  color: #3F273F;
 }
 
 .delete-profile-dropdown-nav:hover {
