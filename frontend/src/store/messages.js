@@ -35,6 +35,7 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_MESSAGE:
             const message = action.payload;
+            console.log("MESSAGE", message);
             const previousMessages = state[message.ConversationId] ? state[message.ConversationId] : [];
             return {
                 ...state,

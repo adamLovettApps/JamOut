@@ -8,6 +8,22 @@ module.exports = (sequelize, DataTypes) => {
     UserId2: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    unreadUser1: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    unreadUser2: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    newConversationUser1: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    newConversationUser2: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {});
   Conversation.associate = function(models) {

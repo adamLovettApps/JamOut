@@ -20,7 +20,14 @@ module.exports = (sequelize, DataTypes) => {
     fromUsername: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },unreadUser1: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    unreadUser2: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
   }, {});
   Message.associate = function(models) {
     Message.belongsTo(models.Conversation, {foreignKey: "id"})
