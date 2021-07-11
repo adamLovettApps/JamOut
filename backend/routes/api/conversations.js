@@ -49,16 +49,6 @@ router.get('/messages/:id', asyncHandler(async (req, res) => {
         raw: true
     });
 
-    // for (let i = 0; i < conversation.Messages.length; i++) {
-    //     console.log(conversation.dataValues.Messages[i].UserIdFrom, "FROM ID")
-    //     let from = await User.findByPk(conversation.dataValues.Messages[i].UserIdFrom, {
-    //         raw: true
-    //     });
-    //     console.log(from, "from");
-    //     conversation.dataValues.Messages[i]["from"] = from;
-    //     //  console.log(conversation.dataValues.Messages[i]);
-    // }
-
 
 
     return res.json(conversation);
@@ -67,7 +57,6 @@ router.get('/messages/:id', asyncHandler(async (req, res) => {
 router.get('/:UserId/:UserId2', asyncHandler(async (req, res) => {
     const UserId = parseInt(req.params.UserId);
     const UserId2 = parseInt(req.params.UserId2);
-    console.log("HERE!");
     let newConvo = false;
     let conversation = await Conversation.findOne({
         where: {
@@ -97,7 +86,6 @@ router.get('/:UserId/:UserId2', asyncHandler(async (req, res) => {
             ]
         }
     })
-    console.log(conversation);
     if (conversation === null) {
         conversation = await Conversation.create({
             UserId: UserId,

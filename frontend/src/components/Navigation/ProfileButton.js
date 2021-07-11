@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
   return (
     <div className="action-button-container">
       <button className="nav-action-button" onClick={openMenu}>
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-bars"></i>
       </button>
       {showMenu && (
         <div className="profile-dropdown">

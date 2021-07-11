@@ -24,7 +24,6 @@ export const getAllMessages = (id) => async(dispatch) => {
     if (id) {
         const res = await fetch(`/api/conversations/messages/${id}`);
         const conversation = await res.json();
-        console.log(conversation)
         dispatch(setMessages(conversation.Messages, conversation));
     }
 };
@@ -35,7 +34,6 @@ const reducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_MESSAGE:
             const message = action.payload;
-            console.log("MESSAGE", message);
             const previousMessages = state[message.ConversationId] ? state[message.ConversationId] : [];
             return {
                 ...state,

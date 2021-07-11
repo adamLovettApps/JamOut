@@ -15,8 +15,7 @@ router.post(
     '/',
     singleMulterUpload("song"),
     asyncHandler(async (req, res) => {
-        console.log(req.file);
-        console.log("BODY", req.body);
+
         const id = parseInt(req.body.id);
         const title = req.body.title;
         const url = await singlePublicFileUpload(req.file);
@@ -27,7 +26,6 @@ router.post(
         }
 
         )
-        console.log("SONG!!!!", song)
         return res.json({
             song
         });

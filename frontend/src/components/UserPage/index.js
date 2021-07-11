@@ -101,15 +101,10 @@ const UserPage = ({socket}) => {
 
 
         if (loggedUser && loggedUser.id !== user.id && favorites.length !== 0) {
-            console.log("CONDITION MET");
             favorites.forEach((favorite) => {
-                console.log("HIT")
                 if (favorite.UserId === loggedUser.id && favorite.UserId2 === user.id) {
                     favorited = true;
-                    console.log("TRUE!!!")
                 }
-                console.log("HERE")
-                console.log(favorited)
             })
         }
                                 
@@ -164,7 +159,7 @@ const UserPage = ({socket}) => {
                         <div className="user-page-profile-container-information">
                             <div className="user-page-profile-container-information-username">
                                 {user.username} {loggedUser && parseInt(loggedUser.id) === parseInt(id) && <EditUserFormModal></EditUserFormModal>}
-                                {console.log(loggedUser)}
+                            
                             </div>
                             <div className="user-page-profile-container-information-username-divider">
                                 <hr className="user-page-profile-container-information-divider"></hr>
@@ -238,7 +233,7 @@ const UserPage = ({socket}) => {
                         }
                         <div className="song-container-song-list">
                         {user.Songs.length && user.Songs.map((song) => {
-                                return (<div className="song-container-song-title" onClick={(() => updateSong(song))}>{song.title} {loggedUser && parseInt(loggedUser.id) === parseInt(id) && <span onClick={((e) => deleteSong(e, song.id))}><i class="fas fa-times-circle"></i></span>}</div>)
+                                return (<div className="song-container-song-title" onClick={(() => updateSong(song))}>{song.title} {loggedUser && parseInt(loggedUser.id) === parseInt(id) && <span id={song.id} onClick={((e) => deleteSong(e, song.id))}><i className="fas fa-times-circle"></i></span>}</div>)
                             }
                         )}
                         </div>
@@ -292,7 +287,7 @@ const UserPage = ({socket}) => {
                         <div className="user-page-profile-container-information">
                             <div className="user-page-profile-container-information-username">
                                 <div>{user.username}</div> {loggedUser && parseInt(loggedUser.id) === parseInt(id) && <div><EditUserFormModal></EditUserFormModal></div>}
-                                {console.log(loggedUser)}
+                                
                             </div>
                             <div className="user-page-profile-container-information-username-divider">
                                 <hr className="user-page-profile-container-information-divider"></hr>

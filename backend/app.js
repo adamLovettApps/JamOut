@@ -81,12 +81,10 @@ io.on('connection', async(socket) => {
   socket.on('join', async (conversationId) => {
       const conversation = await Conversation.findByPk(conversationId);
       socket.join(conversation.id, async () => {
-        console.log('joined');
       });
   });
 
   socket.on('new', async(conversationId) => {
-    console.log("GOT HERE", conversationId);
     socket.on(conversationId, async({message, id, username}) => {
       let conversation = await Conversation.findByPk(conversationId);
       const toUser = conversation.dataValues.UserId === id ? conversation.dataValues.UserId2 : conversation.dataValues.UserId;
@@ -136,7 +134,6 @@ io.on('connection', async(socket) => {
   });
 
   socket.on('acceptincoming', async(conversationId) => {
-    console.log("HELLLLLOOOOOLALALALA!");
     const updated = await Conversation.update({
         newConversationUser1: false,
         newConversationUser2: false
@@ -146,11 +143,7 @@ io.on('connection', async(socket) => {
           id: conversationId
         }
       })
-      console.log(updated);
-    console.log("@@@@@@@@@@@@@@IS THIS BEING REACHED?!?!?", conversationId)
     socket.on(conversationId, async({message, id, username}) => {
-      console.log("IS THIS BEING REACHED?!?!?", conversationId)
-      console.log("EMIT<ENITIEEINIEREIRNIENRIENIEEINEIRNEIREIRNEINR")
       let conversation = await Conversation.findByPk(conversationId);
       const toUser = conversation.dataValues.UserId === id ? conversation.dataValues.UserId2 : conversation.dataValues.UserId;
       let new1 = conversation.dataValues.UserId1 === toUser;
@@ -250,7 +243,6 @@ io.on('connection', async(socket) => {
         createdAt: new Date(),
         updatedAt: new Date(),
       });
-      // console.log(conversation.dataValues.UserId, newMessage.UserIdTo, "INFORMATION");
       if (conversation.dataValues.UserId === newMessage.UserIdTo) {
         const updated = await Conversation.update({
             unreadUser1: true,

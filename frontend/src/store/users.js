@@ -20,7 +20,6 @@ const updateUser = (user) => ({
 
 export const getUser = (id) => async(dispatch) => {
     const {data} = await fetch(`/api/users/${id}`);
-    console.log("DATA!!!", data)
     dispatch(setUser(data));
     return;
 };
@@ -34,7 +33,6 @@ export const getNewUserInformation = (id, city, state, zip, bio, chosenInstrumen
         body: JSON.stringify({id, city, state, zip, bio, chosenInstruments, chosenGenres})
     });
 
-    console.log(newUser.data);
     dispatch(updateUser(newUser.data));
 }
 
@@ -46,8 +44,6 @@ export const addASong = (formData) => async(dispatch) => {
         },
         body: formData
     });
-
-    console.log(" RESPONSE", data.song);
     dispatch(addSong(data.song))
 
 };

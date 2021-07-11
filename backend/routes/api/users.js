@@ -74,7 +74,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 router.put('/updateUser', asyncHandler(async(req, res) => {
   let {id, city, state, zip, bio, chosenInstruments, chosenGenres} = req.body;
-  console.log(id, city, state, zip, bio, chosenInstruments, chosenGenres);
   let data = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=${key}&components=postal_code:${zip}`);
   let results = await data.json();
   let lng = results.results[0].geometry.location.lng;
@@ -235,7 +234,6 @@ router.get('/getFavorites/:userId', asyncHandler(async (req, res) => {
           ]
         }
       );
-    console.log(likes[i])
     likes[i].dataValues = {
       ...likes[i].dataValues,
       userInformation: userInformation
@@ -287,7 +285,6 @@ router.post('/setFavorite/:userId/:userId2/:statusCode', asyncHandler(async (req
             }
           ]
         });
-    console.log(likes[i])
     likes[i].dataValues = {
       ...likes[i].dataValues,
       userInformation: userInformation

@@ -18,7 +18,6 @@ const ChatWindow = ({socket}) => {
 
     useEffect(() => {
         if (currentConversation) {
-            console.log(`joining ${currentConversation}`)
             socket.emit('join', currentConversation);
         }
     },[currentConversation, socket]);
@@ -32,10 +31,7 @@ const ChatWindow = ({socket}) => {
         }
 
             socket.on(currentConversation, (incoming) => {
-            console.log(
-                `Recieved new message for : ${incoming}`
-            );
-            console.log("MESSSSSSAGEEEEEE!", incoming);
+
             dispatch(addMessage(incoming));
         });
 
@@ -46,7 +42,6 @@ const ChatWindow = ({socket}) => {
         if (latestMessage.current) {
             latestMessage.current.scrollIntoView();
         }
-        console.log(socket);
     });
 
     useEffect(() => {
@@ -54,7 +49,6 @@ const ChatWindow = ({socket}) => {
     }, [dispatch, currentConversation]);
 
     const sendMessage = message => {
-        console.log(user.id, currentConversation);
         socket.emit(currentConversation, {
             message: message,
             id: user.id,
@@ -79,7 +73,7 @@ const ChatWindow = ({socket}) => {
             <div>
             {messages.map((message) => {
                 return (
-                    <div className="single-message-container" id={message.id} ref={latestMessage}>
+                    <div id={message.id} className="single-message-container" ref={latestMessage}>
                         <span className="single-message-username">{message.fromUsername}:</span> {message.text}
                     </div>
                     // {message.from.username}:
@@ -93,7 +87,7 @@ const ChatWindow = ({socket}) => {
                 <button className="form-field-button-message" type="submit">Send</button>
             </form>
         </div>
-        <div style={{display: displayValue}} className="close-messaging-button" onClick={(() => dispatch(setDisplay("none")))}><i class="fas fa-times-circle close-message"></i></div>
+        <div style={{display: displayValue}} className="close-messaging-button" onClick={(() => dispatch(setDisplay("none")))}><i className="fas fa-times-circle close-message"></i></div>
 
         </>
     )

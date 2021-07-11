@@ -184,7 +184,7 @@ function SignupFormPage() {
         
         
         <div className="file-container">
-        <label className="file-input-label" for="file-input" id="file-input-label">Profile Photo</label>
+        <label className="file-input-label" htmlFor="file-input" id="file-input-label">Profile Photo</label>
           <input type="file" id="file-input-box" accept="image/*" onChange={updateFile} />
         </div>
         <div className="form-field-button-container">
