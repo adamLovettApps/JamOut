@@ -34,7 +34,7 @@ function EditUserForm({setShowModal}) {
       setZip(currentUser.zip);
       setBio(currentUser.bio);
       
-      console.log(previousChosenGenres, "PREV")
+
       setChosenGenres(previousChosenGenres);
       setChosenInstruments(previousChosenInstruments);
       setIsLoaded(true);

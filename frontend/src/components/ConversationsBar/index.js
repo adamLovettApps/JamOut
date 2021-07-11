@@ -51,7 +51,6 @@ const ConversationsBar = (socket) => {
     const handleSlider = () => {
         const conversationContainer = document.getElementById("conversations-bar-container");
         const sliderIcon = document.getElementById("slider-icon");
-        console.log(conversationContainer)
         if (sliderState === "closed") {
             conversationContainer.style.right ="0px";
             sliderIcon.classList.remove("fa-chevron-left");
@@ -69,7 +68,7 @@ const ConversationsBar = (socket) => {
     return (
         <>
         <div id="conversations-bar-container" className="conversations-bar-container">
-            <div className="slider-button" onClick={handleSlider}><i id="slider-icon" class="fas fa-chevron-left"></i></div>
+            <div className="slider-button" onClick={handleSlider}><i id="slider-icon" className="fas fa-chevron-left"></i></div>
             <div className="conversations-bar-conversations-container">
                 {conversations.length && conversations.map((conversation => {
                     let bold;

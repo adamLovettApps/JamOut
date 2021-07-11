@@ -51,7 +51,7 @@ const AddSongForm = () => {
                     <div className="flex-form">
                         <div className="song-title-text-div"> <input className="form-field-input-song" type="text" placeholder="Song Title" value={title} onChange={((e) => setTitle(e.target.value))}></input></div>
                         <div id="song-upload-selector-div" className="song-upload-selector">
-                            <label for="song-input" id="file-label"><div className="choose-song-text"><div className="choose-song-text-inner">Choose a Song</div></div></label>
+                            <label htmlFor="song-input" id="file-label"><div className="choose-song-text"><div className="choose-song-text-inner">Choose a Song</div></div></label>
                             <input 
                                 type="file" 
                                 id="song-input"

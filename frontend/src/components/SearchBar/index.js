@@ -49,13 +49,13 @@ const SearchBar = () => {
         <form className="search-bar-container" onSubmit={handleSubmit}>
             <div>
                 <select className="search-multi-select" name="instruments" multiple onChange={handleInstruments}>
-                {instruments.map((instrument) => (<option value={instrument.id}>{instrument.name}</option>))}
+                {instruments.map((instrument) => (<option id={instrument.id} value={instrument.id}>{instrument.name}</option>))}
                 </select>
             </div>
             <div>
 
                 <select className="search-multi-select" name="genres" multiple onChange={handleGenres}>
-                {genres.map((genre) => (<option value={genre.id}>{genre.name}</option>))}
+                {genres.map((genre) => (<option id={genre.id} value={genre.id}>{genre.name}</option>))}
                 </select>
         
             </div>

@@ -64,7 +64,6 @@ router.post('/', asyncHandler(async (req, res) => {
     })
 
     users = users.map(User => User.dataValues)
-    console.log("USERS", users, "LENGTH", users.length);
     for (i = 0; i < users.length; i++) {
         let instruments = await Instrument.findAll({
             include: [

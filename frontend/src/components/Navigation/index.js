@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
   return (
     <div className="nav-bar-container">
         <div>
-          <NavLink className="nav-bar-home-link" exact to="/"><i class="fas fa-home"></i></NavLink>
+          <NavLink className="nav-bar-home-link" exact to="/"><i className="fas fa-home"></i></NavLink>
         </div>
         <div className="logo-container">
           <img alt="Jam Out Logo" src="https://jamout.s3.us-west-1.amazonaws.com/jamout.png"></img>
