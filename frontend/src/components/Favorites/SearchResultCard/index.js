@@ -48,7 +48,6 @@ const SearchResultCard = ({user}) => {
                             }
                         })}
                     </div>
-                    <div className="search-result-single-card-container-information-distance">{user.userdistance} miles away</div>
                 </div>
             </div>
             </Link>
