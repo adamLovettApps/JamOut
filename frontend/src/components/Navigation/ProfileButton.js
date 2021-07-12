@@ -45,16 +45,16 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="profile-dropdown">
           <div className="profile-link-dropdown">
-            <Link className="profile-link-dropdown-nav" to={`/users/${user.id}`}>Your Profile</Link>
+            <Link  to={`/users/${user.id}`}><button className="profile-link-dropdown-nav">Your Profile</button></Link>
           </div>
           <div className="favorites-dropdown">
-            <Link  className="favorites-dropdown-nav" to={`/favorites/`}>Your Favorites</Link>
+            <Link to={`/favorites/`}><button className="favorites-dropdown-nav">Your Favorites</button></Link>
           </div>
           <div className="log-out-dropdown" onClick={logout}>
-            <Link className="log-out-dropdown-nav" to="/">Log Out</Link>
+            <Link to="/"><button className="log-out-dropdown-nav">Log Out</button></Link>
           </div>
           <div className="delete-profile-dropdown">
-            <Link className="delete-profile-dropdown-nav" to={`/deleteProfile/`}>Delete Profile</Link>
+            <Link to={`/deleteProfile/`}><button className="delete-profile-dropdown-nav" >Delete Profile</button></Link>
           </div>
         </div>
       )}

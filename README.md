@@ -14,7 +14,7 @@ JamOut does the vast majority of its application logic on the backend, but displ
 
 ### Frontend Technologies Used
 
-#### React
+#### React 
 
 JamOut is a React application. All display logic is handled by the React libraries.
 
