@@ -20,6 +20,37 @@
   z-index: 4;
 }
 
+.login-demo-button-1 {
+  font-family: 'Montserrat', sans-serif;
+    color: #F7F2F7;
+    border-radius: 2px;
+    background-color: rgba(99,100,126, 0.9);
+    font-size: 14px;
+    height: 30px;
+    border: 1px solid #AAABBC;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: 600;
+    width: 80px;
+    margin-left: -320px;
+    margin-right: 10px;
+}
+
+.login-demo-button-2 {
+  font-family: 'Montserrat', sans-serif;
+    color: #F7F2F7;
+    border-radius: 2px;
+    background-color: rgba(99,100,126, 0.9);
+    font-size: 14px;
+    height: 30px;
+    border: 1px solid #AAABBC;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: 600;
+    width: 80px;
+    margin-right: 150px;
+}
+
 .nav-bar-container {
   width: 100%;
   padding-right: 10px;
