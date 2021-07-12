@@ -22,7 +22,7 @@ const ConversationsBar = (socket) => {
 
         const interval = setInterval(() => {
             dispatch(getUserConversations(user.id));
-        }, 10000);
+        }, 1000);
 
         return () => clearInterval(interval);
         
