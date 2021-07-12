@@ -2,7 +2,7 @@
 
 ## JamOut at a Glance
 
-JamOut is a full stack PERN app that allows users to find other musicians within a selected radius of an inputted zipcode, filtered by the instruments they play and the genres they are interested in. Logged in users can favorite other users and instant message with other other users, by way of the socket.io library. Users can also upload songs to their profile pages to demonstrate the types of music they like to make. Currently, JamOut is only seeded with users in the Southern California area, particularly Los Angeles County, the Inland Empire, and San Diego County.
+JamOut is a full stack PERN app that allows users to find other musicians within a selected radius of an inputted zipcode, filtered by the instruments they play and the genres they are interested in. Logged in users can favorite other users and instant message with other users, by way of the socket.io library. Users can also upload songs to their profile pages to demonstrate the types of music they like to make. Currently, JamOut is only seeded with users in the Southern California area, particularly Los Angeles County, the Inland Empire, and San Diego County.
 
 ## Application Architecture
 
