@@ -6,7 +6,7 @@ JamOut is a full stack PERN app that allows users to find other musicians within
 
 ## Application Architecture
 
-JamOut is built on a React frontend with an Express backend, using PostgreSQL as a database. The PostGIS PostgreSQL extension is also used to allow for distance queries.
+JamOut is built on a React frontend with an Express backend, using PostgreSQL as a database. The PostgreSQL PostGIS extension is also used to allow for distance queries.
 
 ## Frontend Overview
 
