@@ -10,7 +10,7 @@ JamOut is built on a React frontend with and Express backend, using PostgreSQL a
 
 ## Frontend Overview
 
-JamOut does the vast majority of its application logic on the backend, but display login on the frontend is managed using several technologies.
+JamOut does the vast majority of its application logic on the backend, but display/interaction logic on the frontend is managed using several technologies.
 
 ### Frontend Technologies Used
 
@@ -32,7 +32,7 @@ Amazon Serverless Image Handler is used to transform user profile pictures into 
 
 #### React H5 Audio Player
 
-The React H5 Audio Player library was used to allow users to play songs that have been uploaded to other user profiles. While the audio player manages playing and pausing tracks, the skip track forward, skip track backward, the now playing feature, and song library had to be implemented from scratch.
+The React H5 Audio Player library is used to allow users to play songs that have been uploaded to user profiles. While the audio player manages playing and pausing tracks, the skip track forward, skip track backward, the now playing feature, and song library had to be implemented from scratch.
 
 
 ## Backend Overview
@@ -52,6 +52,8 @@ PostgreSQL was the database of choice because it is simple to work with, and is 
 #### PostGIS
 
 The PostGIS PostgreSQL extension is enabled in JamOut to allow for the use of geography points in the database, which allow for spatial queries. This allows users to search for other users within a particular user-supplied zip code when searching for other musicians.
+
+PostGIS is also used to transfrom latitude and longitude coordinates into geography points. Any time a user signs up or changes their zip code, the Google Geocoder API is called to retrieve the latitude and longitude coordinates for the supplied zip code. When latitude and longitude coordinates are inserted/updated, a trigger inside of PostgreSQL calls a function inside of PostgreSQL that uses PostGIS to generate a new geography point based on the provided latitude and longitude.
 
 #### Sequelize
 
