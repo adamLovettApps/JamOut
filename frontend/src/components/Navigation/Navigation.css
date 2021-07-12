@@ -117,6 +117,12 @@
   color: #F7F2F7;
   font-weight: 500;
   height: 20px;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  justify-content: left;
+  padding: 0px;
 }
 
 .profile-link-dropdown-nav:hover {
@@ -136,6 +142,12 @@
   color: #F7F2F7;
   font-weight: 500;
   height: 20px;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  justify-content: left;
+  padding: 0px;
 }
 
 
@@ -158,6 +170,12 @@
   color: #F7F2F7;
   font-weight: 500;
   height: 20px;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  justify-content: left;
+  padding: 0px;
 }
 
 .favorites-dropdown {
@@ -171,6 +189,12 @@
   color: #F7F2F7;
   font-weight: 500;
   height: 20px;
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  justify-content: left;
+  padding: 0px;
 }
 
 .favorites-dropdown-nav:hover {
