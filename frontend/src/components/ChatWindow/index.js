@@ -68,7 +68,6 @@ const ChatWindow = ({socket}) => {
 
     return (
         <>
-        
         <div className="messaging-container" style={{display: displayValue}}>
             <div>
             {messages.map((message) => {

@@ -18,6 +18,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    overflow: auto;
+}
+
+.conversations-bar-conversations-container-header {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    color: #F7F2F7;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #7D4F7D;
+    border-bottom: 2px solid #3F273F;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 500;
 }
 
 .slider-button {
