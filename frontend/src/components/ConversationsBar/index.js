@@ -70,7 +70,7 @@ const ConversationsBar = (socket) => {
         <div id="conversations-bar-container" className="conversations-bar-container">
             <div className="slider-button" onClick={handleSlider}><i id="slider-icon" className="fas fa-chevron-left"></i></div>
             <div className="conversations-bar-conversations-container">
-                {conversations.length && conversations.map((conversation => {
+                {conversations.length > 0 && conversations.map((conversation => {
                     let bold;
                     const displayName = user.id === conversation.user1.id ? conversation.user2.username : conversation.user1.username;
                     if (user.id === conversation.user1.id && conversation.unreadUser1 === true) {
