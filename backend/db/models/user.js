@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     lat: {
       type: DataTypes.FLOAT,

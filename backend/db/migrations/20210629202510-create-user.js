@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       bio: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       lat: {
         allowNull: false,
