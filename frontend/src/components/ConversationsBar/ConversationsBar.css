@@ -1,16 +1,17 @@
 .conversations-bar-container {
-    width: 200px;
+    width: 280px;
     height: 600px;
     top: 110px;
     position: absolute;
-    right: -169px;
+    right: -248px;
     transition: right 1s;
     display: flex;
     transition-timing-function: ease-in;
+    z-index:10;
 }
 
 .conversations-bar-conversations-container {
-    width: 200px;
+    width: 280px;
     height: 600px;
     background-color: #F7F2F7;
     border: 2px solid #3F273F;

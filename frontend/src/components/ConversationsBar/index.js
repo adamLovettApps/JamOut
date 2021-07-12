@@ -57,7 +57,7 @@ const ConversationsBar = (socket) => {
             sliderIcon.classList.add("fa-chevron-right");
             setSliderState("open");
         } else {
-            conversationContainer.style.right = "-169px";
+            conversationContainer.style.right = "-248px";
             sliderIcon.classList.remove("fa-chevron-right");
             sliderIcon.classList.add("fa-chevron-left");
             setSliderState("closed");
