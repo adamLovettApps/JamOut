@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     text: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     fromUsername: {
